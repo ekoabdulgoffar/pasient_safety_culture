@@ -1,4 +1,3 @@
-@@ -0,0 +1,87 @@
 @extends('dist.layout') 
 
 @section('title') 

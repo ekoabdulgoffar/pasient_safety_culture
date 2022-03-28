@@ -7,32 +7,135 @@ use App\Models\Tr_respon;
 use App\Models\Ms_kuesioner;
 use App\Models\Dt_dkuesioner;
 use App\Models\Dt_drespon;
+use App\Models\Ms_kelompok_pertanyaan;
+use App\Models\Ms_pertanyaan;
 
 
 class UserKuesionerController extends Controller
 {
     //
-    function index($id){
-        $this->checklogin();
+    function index(){
+        
+        if (!session()->has('user_id')) {
+			return redirect('login');
+		}
 
+        $pass = [];
+
+        $data = [];
+        // get kelompok
+        $kelompok = Ms_kelompok_pertanyaan::get();
+        // get data response        
+        $data_responses = Tr_respon::where('user_id',session('user_id'))
+        ->get();
+
+        foreach($data_responses as $data_response){
+            $hasil = 0;
+            $skor = [];
+            $total_skor = 0;
+            $jumlah_pertanyaan = 0;
+             
+            foreach ($kelompok as $k) {
+                array_push($skor,0);
+            }
+            array_push($skor,0);
+
+            $kuesioner = $this->getKuesionerByResponId($data_response['respon_id']);
+            $jawaban = Dt_drespon::where('respon_id', $data_response['respon_id'])->get();
+            
+            foreach ($jawaban as $key => $j) {
+                
+                $dt_dkuesioner = Dt_dkuesioner::where('dkuesioner_id',$j['dkuesioner_id'])->first();
+                $pertanyaan = Ms_pertanyaan::where('pertanyaan_id', $dt_dkuesioner['pertanyaan_id'])->first();
+                foreach ($kelompok as $k) {
+                    
+                    if($k['kelompok_pertanyaan_deskripsi'] != 'Pribadi'){
+                        if($pertanyaan['kelompok_pertanyaan_id'] == $k['kelompok_pertanyaan_id']){
+                            
+                            $skor[$pertanyaan['kelompok_pertanyaan_id']]+=$j['drespon_jawaban'];
+                            $total_skor+=$j['drespon_jawaban'];
+                            $jumlah_pertanyaan++;
+                            break;
+                        }
+                    }
+                }                
+            }
+            $skor_mean = [];
+
+            foreach ($skor as $key=>$s) {
+                $jumlah = count(Ms_pertanyaan::where('kelompok_pertanyaan_id', $key)->get());
+                if($jumlah != 0 && $s != 0){
+                    array_push($skor_mean, $this->getMean($s, $jumlah));
+                }else{
+                    array_push($skor_mean, -1);
+                }
+            }
+            
+            $format = [
+                'kuesioner' => $this->getKuesionerByResponId($data_response['respon_id']),
+                'respon' => $data_response,
+                'total_skor' => $total_skor,
+                'skor_mean' => $skor_mean,
+                'mean_total_skor' => $this->getMean($total_skor,$jumlah_pertanyaan)
+            ];
+
+            array_push($data, $format);
+        }
+        $pass['data'] = $data;
+
+        return view('user_kuesioner_history', $pass);
+    }
+
+    function historyKuesioner(){
+        if (!session()->has('user_id')) {
+			return redirect('login');
+		};
+
+        $pass = [];
+        
+        // get data kuesioner
+        $data_kuesioners = Ms_kuesioner::get();
+
+        $kuesioners = [];
+        foreach($data_kuesioners as $data_kuesioner){
+            $lastRespon = Tr_respon::where('user_id', session('user_id'))
+            ->orderBy('respon_datetime', 'desc')
+            ->join('dt_drespon', 'dt_drespon.respon_id', '=', 'tr_respon.respon_id')
+            ->join('dt_dkuesioner', 'dt_dkuesioner.dkuesioner_id', '=', 'dt_drespon.dkuesioner_id')
+            ->join('ms_kuesioner', 'ms_kuesioner.kuesioner_id','=','dt_dkuesioner.kuesioner_id')
+            ->where('ms_kuesioner.kuesioner_id', $data_kuesioner['kuesioner_id'])
+            ->first();
+            
+            $format = [
+                'kuesioner_id' => $data_kuesioner['kuesioner_id'],
+                'kuesioner_deskripsi' => $data_kuesioner['kuesioner_deskripsi'],
+                'kuesioner_created_by' => $data_kuesioner['kuesioner_created_by'],
+                'kuesioner_modified_by' => $data_kuesioner['kuesioner_modified_by'],
+                'kuesioner_created_date' => $data_kuesioner['kuesioner_created_date'],
+                'kuesioner_modified_date' => $data_kuesioner['kuesioner_modified_date'],
+                'status' => 0
+            ];
+            array_push($kuesioners, $format);
+        }
+        $pass['data'] = $kuesioners;
+
+        return view('user_kuesioner_kuesioner', $pass);
+    }
+
+    function goto_isi_kuesioner_page($id){
+        if (!session()->has('user_id')) {
+			return redirect('login');
+		};
+        
         $id = mydecrypt($id, "Siperikar@drrc-ui20221");
 
         // variable kirim ke view
         $pass = [];
 
-        // validasi ngisi yang udah ada
-        $respon = Tr_respon::where('user_id', session('user_id'))
-        ->get();
-        foreach($respon as $r){            
-            if($this->getKuesionerByResponId($r['respon_id'])['kuesioner_id'] == $id){
-                return redirect('user-kuesioner');
-            }
-            // if(count($this->getListPertanyaanByKuesionerId($r['respon_id'])) > 0){
-                
-            //     if($this->getListPertanyaanByKuesionerId($r['respon_id'])['kuesioner_id'] == $id){
-            //         return redirect('user-kuesioner');
-            //     }
-            // }
+        // validasi id kuesioner        
+        $kues = Ms_kuesioner::where('kuesioner_id', $id)->first();
+        if($kues == null){
+            return redirect('user-kuesioner');
         }
         
         $pertanyaan = $this->getListPertanyaanByKuesionerId($id);
@@ -58,12 +161,13 @@ class UserKuesionerController extends Controller
         $pass['jenis_pertanyaan'] = $jenis_pertanyaan;
         $pass['kuesioner'] = $kuesioner;
         $pass['kelompok_pertanyaan'] = $kelompok_pertanyaan;
-        
         return view('user_kuesioner_isi', $pass);
     }
 
     function submitKuesioner(Request $request){
-        $this->checklogin();
+        if (!session()->has('user_id')) {
+			return redirect('login');
+		};
         
         // get data pertanyaan
         $pertanyaan = $this->getListPertanyaanByKuesionerId($request['kuesioner_id']);
@@ -105,7 +209,9 @@ class UserKuesionerController extends Controller
     }
 
     function detailKuesioner($id){
-        $this->checklogin();
+        if (!session()->has('user_id')) {
+			return redirect('login');
+		};
         
         $pass = [];
         $id = mydecrypt($id, "Siperikar@drrc-ui20221");
@@ -162,7 +268,9 @@ class UserKuesionerController extends Controller
     }
 
     function editKuesioner($id){
-        $this->checklogin();
+        if (!session()->has('user_id')) {
+			return redirect('login');
+		};
 
         $id = mydecrypt($id, "Siperikar@drrc-ui20221");
 

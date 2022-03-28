@@ -35,4 +35,20 @@ Route::resource('/history_kuesioner', 'HistoryKuesionerController');
 
 
 // USER
+// USER
 Route::resource('/user-dashboard', 'HomeUserController');
+
+// USER KUESIONER
+
+Route::get('/user-kuesioner', [UserKuesionerController::class, 'index']);
+Route::get('/user-kuesioner-kuesioner', [UserKuesionerController::class, 'historyKuesioner']);
+
+    // ISI KUESIONER
+    Route::get('/user-kuesioner/isi/{id}', [UserKuesionerController::class, 'goto_isi_kuesioner_page']);
+    Route::get('/user-kuesioner/detail/{id}', [UserKuesionerController::class, 'detaikKuesioner2']);
+    Route::get('/user-kuesioner/edit/{id}', [UserKuesionerController::class, 'editKuesioner']);
+        
+    Route::post('/isi-kuesioner', [UserKuesionerController::class, 'submitKuesioner']);
+
+    // END ISI KUESIONER
+   
