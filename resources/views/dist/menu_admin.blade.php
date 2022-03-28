@@ -1,9 +1,9 @@
 	<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-success" href="{{ url('/Dashboard') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="{{ url('/Dashboard') }}">
         <div class="sidebar-brand-icon">
-          <img src="{{ asset('assets-ruang-admin/img/drrc-edurisk-crop.png') }}">
+          <img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}">
         </div>
-        <div class="sidebar-brand-text mx-3">SIPERIKAR</div>
+        <div class="sidebar-brand-text mx-3">PSC</div>
       </a>
       <hr class="sidebar-divider my-0">
 	  <li class="nav-item">

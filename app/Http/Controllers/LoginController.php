@@ -32,7 +32,7 @@ class LoginController extends Controller
 			// cek user
 			$data = Users::where([
 				['user_username', '=', $request->input('username')],
-				['user_password', '=', myencrypt($request->input('password'),"Siperikar@drrc-ui20221")],
+				['user_password', '=', myencrypt($request->input('password'),"Pasientsafetyculture@2022")],
 				['user_status', '=', 1]
 			])->first();
 			//$data = null;
@@ -103,7 +103,7 @@ class LoginController extends Controller
 		} else {
 			$data = array(
 				'user_username' => $request->input("user_username"),
-				'user_password' => myencrypt("Edurisk@".date('Y'), "EduriskPayment2022!"),
+				'user_password' => myencrypt("Edurisk@".date('Y'), "Pasientsafetyculture@2022"),
 				'user_name' => $request->input("user_name"),
 				'user_date_of_born' => $request->input("user_date_of_born"),
 				'user_place_of_born' => $request->input("user_place_of_born"),

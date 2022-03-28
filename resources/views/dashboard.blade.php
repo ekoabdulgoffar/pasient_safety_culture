@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link href="{{ asset('assets-ruang-admin/img/logo/logo-edurisk.PNG') }}" rel="icon" />
-    <title>SIMRIS DAMKAR | Dashboard</title>
+    <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon" />
+    <title>PSC | Dashboard</title>
     @include('dist.css')
   </head>
 
@@ -27,7 +27,7 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Change Password' ?></h1>
               <ol class="breadcrumb">
-                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">SIM PERIKAR</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Pasient Safety Culture</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Change Password' ?></li>
               </ol>
             </div>

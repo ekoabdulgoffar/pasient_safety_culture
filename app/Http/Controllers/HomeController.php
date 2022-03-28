@@ -17,7 +17,7 @@ class HomeController extends Controller
 		
 		$data['skor'] = Ms_skor::get();
 
-        return view('map', $data);
+        return view('dashboard', $data);
     }
 		
 }

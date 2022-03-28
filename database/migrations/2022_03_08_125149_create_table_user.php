@@ -15,11 +15,11 @@ class CreateTableUser extends Migration
     {
         Schema::create('ms_user', function (Blueprint $table) {
             $table->bigIncrements('user_id')->unsigned();
-			$table->string('user_username', 100);
-			$table->string('user_password', 100);
-			$table->string('user_email', 100);
-			$table->string('user_name', 100);
-			$table->string('user_phone', 100);
+			$table->string('user_username', 100)->nullable();;
+			$table->string('user_password', 100)->nullable();;
+			$table->string('user_email', 100)->nullable();;
+			$table->string('user_name', 100)->nullable();;
+			$table->string('user_phone', 100)->nullable();;
 			$table->integer('user_status');
 			$table->string('user_created_by', 100);
 			$table->string('user_modified_by', 100);
@@ -33,6 +33,8 @@ class CreateTableUser extends Migration
 			$table->string('user_provinsi', 100)->nullable();
 			$table->string('user_cabang_keanggotaan', 100)->nullable();
 			$table->string('user_wilayah_keanggotaan', 100)->nullable();
+			$table->string('user_role', 100)->nullable();
+			$table->timestamp('user_last_login')->nullable();
         });
     }
 
