@@ -21,40 +21,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    function checkLogin(){
-        if (!session()->has('user_id')) {
-			//return redirect('login');
-		}
-        //  else if (session()->has('user_role') == true && session('user_role') != "Admin" ) {
-		// 	return abort(404);
-		// }
-    }
-
-    function getHasilResponse($respon_id){
-        $data_details = Dt_drespon::where('respon_id', $respon_id)->get();
-        $hasil = 0;
-        // perhitungan nilai
-        foreach($data_details as $data_detail){
-            if($data_detail['drespon_jawaban'] != -1){
-                $hasil++;
-            }
-        }
-        $hasil = $hasil / count($data_details) * 100;
-        return $hasil;
-    }
-
-    function getSkorByHasil($hasil){
-        // data ms skor
-        $skors = Ms_skor::orderBy('skor_id', 'desc')->get();
-
-        $output;
-        foreach($skors as $skor){
-            if($hasil <= $skor['skor_max']){
-                $output = $skor;
-            }
-        }
-
-        return $output;
+    function getMean($skor, $total){
+        $skor = $skor / $total;
+        return $skor;
     }
 
     function getKuesionerByResponId($respon_id){

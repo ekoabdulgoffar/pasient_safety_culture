@@ -1,7 +1,7 @@
 @extends('dist.layout') 
 
 @section('title')
-    PSC 2022 | Riwayat Kuesioner
+PSC 2022 | Riwayat Kuesioner
 @endsection
 
 @section('menu')
@@ -24,46 +24,49 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="">Riwayat Pengisian Saya</a>
+        <a class="nav-link" href="user-kuesioner">Riwayat Pengisian Saya</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="user-kuesioner-kuesioner">Daftar Kuesioner</a>
+        <a class="nav-link active" href="#">Daftar Kuesioner</a>
       </li>
     </ul>
   </div>
-  <br>
-  <div class="">
+  <div class="card-body">
     <div class="table-responsive p-3 table-striped">
 			<table class="table align-items-center table-flush table-hover nowrap" id="dataTableHover">
 			  <thead class="">
 				<th>No</th>
 				<th>Kuesioner</th>
-				<th>Waktu pengisian</th>
-				<th>Total Skor</th>
-				<th>x̄ Kerja Tim</th>
-				<th>x̄ Safety</th>
-				<th>x̄ Kepuasan Kerja</th>
-				<th>x̄ Pengakuan Kondisi Stress</th>
-				<th>x̄ Persepsi Manajemen</th>
-				<th>x̄ Kondisi Kerja</th>
-				<th>x̄ Total Skor</th>
+				<th>Dipublish</th>
+				<th>Aksi</th>
 			  </thead>
 			  <tbody>
-					@foreach ($data as $key => $d)
-					<tr>
-						<td>{{$key+1}}</td>
-						<td>{{$d['kuesioner']['kuesioner_deskripsi']}}</td>
-						<td>{{$d['respon']['respon_datetime']}}</td>
-						<td>{{$d['total_skor']}}</td>
-						@foreach ($d['skor_mean'] as $item)
-							@if ($item != -1)
-							<td>{{number_format($item,2,",","")}}</td>
-							@endif
-						@endforeach
-						
-						<td>{{number_format($d['mean_total_skor'],2,",","")}}</td>
-					</tr>
-					@endforeach
+				<?php
+				  foreach ($data as $key=>$d) {
+				?>
+				<tr>
+				  <td>{{$key+1}}.</td>
+				  <td>{{$d['kuesioner_deskripsi']}}</td>
+				  <td>{{ date("d/m/Y", strtotime($d['kuesioner_created_date']));}}</td>
+				  <td>
+						<?php
+							if($d['status'] == 0){
+						?>
+							<a href="user-kuesioner/isi/{{myencrypt($d['kuesioner_id'],"Siperikar@drrc-ui20221")}}" class="btn btn-primary" title="Beri response saya">
+								Isi Sekarang &nbsp;
+								<i class="fa fa-check" aria-hidden="true"></i>
+							</a>
+							<?php
+							}
+							else{
+							?>
+							<p>Minggu ini anda sudah mengisi kuesioner</p>
+							<?php
+							}
+							?>
+          </td>
+				</tr>
+				<?php } ?>
 			  </tbody>
 			</table>
 		</div>
