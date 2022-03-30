@@ -14,7 +14,7 @@
       <li class="nav-item <?php echo Request::segment(1) == 'user-dashboard' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Home</span></a>
+          <span>Beranda</span></a>
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -25,6 +25,12 @@
         <a class="nav-link" href="{{ url('/user-kuesioner') }}">
           <i class="fa fa-history" aria-hidden="true"></i>
           <span>Riwayat Kuesioner</span>
+        </a>
+      </li>
+      <li class="nav-item <?php echo Request::segment(1) == 'user-kuesioner' ? 'active' : '' ?>">
+        <a class="nav-link" href="">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <span>Riwayat Post Test</span>
         </a>
       </li>
       <hr class="sidebar-divider">

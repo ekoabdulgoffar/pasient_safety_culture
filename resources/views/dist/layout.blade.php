@@ -100,6 +100,11 @@
         dom: "Bfrtip",
         buttons: ["copy", "csv", "excel", "pdf", "print"],
       }); // ID From dataTable with Hover
+      $("#dataTableHover2").DataTable({
+        fixedColumns: true,
+        dom: "Bfrtip",
+        buttons: ["copy", "csv", "excel", "pdf", "print"],
+      }); // ID From dataTable with Hover
 
       // Select2 Single  with Placeholder
       $(".select2-single-placeholder").select2({

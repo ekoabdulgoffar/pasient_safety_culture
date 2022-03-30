@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\UserKuesionerController;
+use App\Http\Controllers\PostTestController;
+use App\Http\Controllers\PembelajaranController;
 use App\Http\Controllers\EdukasiController;
 /*
 |--------------------------------------------------------------------------
@@ -58,14 +60,21 @@ Route::resource('/user-dashboard', 'HomeUserController');
 // USER KUESIONER
 
 Route::get('/user-kuesioner', [UserKuesionerController::class, 'index']);
-Route::get('/user-kuesioner-kuesioner', [UserKuesionerController::class, 'historyKuesioner']);
 
-    // ISI KUESIONER
-    Route::get('/user-kuesioner/isi/{id}', [UserKuesionerController::class, 'goto_isi_kuesioner_page']);
-    Route::get('/user-kuesioner/detail/{id}', [UserKuesionerController::class, 'detaikKuesioner2']);
-    Route::get('/user-kuesioner/edit/{id}', [UserKuesionerController::class, 'editKuesioner']);
-        
-    Route::post('/isi-kuesioner', [UserKuesionerController::class, 'submitKuesioner']);
+// ISI KUESIONER
+Route::get('/user-kuesioner/isi/{id}', [UserKuesionerController::class, 'goto_isi_kuesioner_page']);
+Route::get('/user-kuesioner/detail/{id}', [UserKuesionerController::class, 'detaikKuesioner2']);
+Route::get('/user-kuesioner/edit/{id}', [UserKuesionerController::class, 'editKuesioner']);
+    
+Route::post('/isi-kuesioner', [UserKuesionerController::class, 'submitKuesioner']);
 
-    // END ISI KUESIONER
-   
+// END ISI KUESIONER
+
+// PEMBELAJARAN
+Route::resource('/pembelajaran','PembelajaranController');
+Route::post('/update-pembelajaran/{id}', [PembelajaranController::class, 'updatePembelajaran']);
+// END PEMBELAJARAN
+
+// POST TEST
+Route::resource('/post-test', 'PostTestController');
+// END POST TEST

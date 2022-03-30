@@ -15,8 +15,8 @@ class CreateTableMsPostTest extends Migration
     {
         Schema::create('ms_post_test', function (Blueprint $table) {
             $table->bigIncrements('post_test_id')->unsigned();
-			$table->string('post_deskripsi', 200);
-			$table->timestamp('datetime_')->default(\DB::raw('CURRENT_TIMESTAMP'));
+			$table->string('post_test_deskripsi', 200);
+			$table->timestamp('post_test_datetime')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

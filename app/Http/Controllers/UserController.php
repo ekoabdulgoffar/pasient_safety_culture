@@ -73,7 +73,7 @@ class UserController extends Controller
 		$data['crud_message'] = $crud_message;
 		
 		if (session('user_role') == 'Admin') echo view('dashboard', $data);
-		else if (session('user_role') == 'User') echo view('home_user', $data);
+		else if (session('user_role') == 'User') echo view('user_dashboard', $data);
     }
 	
 	public function resetPassword(Request $request)

@@ -26,8 +26,9 @@ class UserKuesionerController extends Controller
         // get kelompok
         $kelompok = Ms_kelompok_pertanyaan::get();
         // get data response        
-        $data_responses = Tr_respon::where('user_id',session('user_id'))
-        ->get();
+        $data_responses = Tr_respon::where('user_id',mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
+        ->get() ;
+        
 
         foreach($data_responses as $data_response){
             $hasil = 0;
@@ -78,27 +79,19 @@ class UserKuesionerController extends Controller
                 'skor_mean' => $skor_mean,
                 'mean_total_skor' => $this->getMean($total_skor,$jumlah_pertanyaan)
             ];
-
+            
             array_push($data, $format);
         }
         $pass['data'] = $data;
 
-        return view('user_kuesioner_history', $pass);
-    }
-
-    function historyKuesioner(){
-        if (!session()->has('user_id')) {
-			return redirect('login');
-		};
-
-        $pass = [];
+        // Tab ke 2
         
         // get data kuesioner
         $data_kuesioners = Ms_kuesioner::get();
 
         $kuesioners = [];
         foreach($data_kuesioners as $data_kuesioner){
-            $lastRespon = Tr_respon::where('user_id', session('user_id'))
+            $lastRespon = Tr_respon::where('user_id', mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
             ->orderBy('respon_datetime', 'desc')
             ->join('dt_drespon', 'dt_drespon.respon_id', '=', 'tr_respon.respon_id')
             ->join('dt_dkuesioner', 'dt_dkuesioner.dkuesioner_id', '=', 'dt_drespon.dkuesioner_id')
@@ -117,9 +110,9 @@ class UserKuesionerController extends Controller
             ];
             array_push($kuesioners, $format);
         }
-        $pass['data'] = $kuesioners;
+        $pass['data2'] = $kuesioners;
 
-        return view('user_kuesioner_kuesioner', $pass);
+        return view('user_kuesioner_history', $pass);
     }
 
     function goto_isi_kuesioner_page($id){
@@ -127,7 +120,7 @@ class UserKuesionerController extends Controller
 			return redirect('login');
 		};
         
-        $id = mydecrypt($id, "Siperikar@drrc-ui20221");
+        $id = mydecrypt($id, "Pasientsafetyculture@2022");
 
         // variable kirim ke view
         $pass = [];
@@ -187,7 +180,7 @@ class UserKuesionerController extends Controller
 
         // insert row pada tr_respon
         $insert = [
-            'user_id' => session('user_id'),
+            'user_id' => mydecrypt(session('user_id'), "Pasientsafetyculture@2022"),
             'respon_datetime' => date('Y-m-d H:i:s')
         ];        
         $tr_respon = Tr_respon::create($insert);
@@ -214,10 +207,10 @@ class UserKuesionerController extends Controller
 		};
         
         $pass = [];
-        $id = mydecrypt($id, "Siperikar@drrc-ui20221");
+        $id = mydecrypt($id, "Pasientsafetyculture@2022");
 
         // validasi ngisi yang udah ada
-        $respon = Tr_respon::where('user_id', session('user_id'))->get();
+        $respon = Tr_respon::where('user_id', mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))->get();
         $resp;
         foreach($respon as $r){
             if($this->getKuesionerByResponId($r['respon_id'])['kuesioner_id'] == $id){                
@@ -272,13 +265,13 @@ class UserKuesionerController extends Controller
 			return redirect('login');
 		};
 
-        $id = mydecrypt($id, "Siperikar@drrc-ui20221");
+        $id = mydecrypt($id, "Pasientsafetyculture@2022");
 
         // variable kirim ke view
         $pass = [];
 
         // validasi ngisi yang udah ada
-        $respon = Tr_respon::where('user_id', session('user_id'))->get();
+        $respon = Tr_respon::where('user_id', mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))->get();
         $resp;
         foreach($respon as $r){
             if($this->getKuesionerByResponId($r['respon_id'])['kuesioner_id'] == $id){                
