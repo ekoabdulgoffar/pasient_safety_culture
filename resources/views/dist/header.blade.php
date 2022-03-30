@@ -12,6 +12,10 @@
                 <span class="ml-2 d-none d-lg-inline text-white small">{{ session('user_name') }}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+				 <a class="dropdown-item" href="{{ url('page_profile').'/'.session('user_id') }}">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ url('page_logout') }}">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

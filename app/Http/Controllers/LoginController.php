@@ -40,7 +40,7 @@ class LoginController extends Controller
 			$cek_login = 0;
 			if ($data != null) 
 			{
-				$user_id = $data->user_id;
+				$user_id = myencrypt($data->user_id,"Pasientsafetyculture@2022");
 				$username = $data->user_username;
 				$name = $data->user_name;
 				$role = $data->user_role;

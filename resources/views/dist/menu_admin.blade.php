@@ -21,15 +21,15 @@
         Menu
       </div>
 	  <li class="nav-item <?php echo Request::segment(1) == 'management_of_user' ? 'active' : '' ?>">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ url('/management_of_user') }}">
           <i class="fas fa-fw fa-user"></i>
           <span>Management of Users</span>
         </a>
       </li>
-	  <li class="nav-item <?php echo Request::segment(1) == 'management_of_questionnaire' ? 'active' : '' ?>">
+	  <li class="nav-item <?php echo Request::segment(1) == 'education_files' ? 'active' : '' ?>">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-book"></i>
-          <span>Questionnaire</span>
+          <span>Education Files</span>
         </a>
       </li>
 	  <li class="nav-item <?php echo Request::segment(1) == 'history_kuesioner' ? 'active' : '' ?>">
@@ -40,5 +40,5 @@
       </li>
       <hr class="sidebar-divider">
       
-      <div class="version">Version 2.0</div>
+      <div class="version">Version 1.0</div>
     </ul>

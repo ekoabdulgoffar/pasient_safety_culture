@@ -17,7 +17,7 @@
 			  </div>
 			  <div class="modal-body">
 				<!-- form start -->
-					<form role="form" action="{{ url('/management_of_user/user_update_password') }}" method="post">
+					<form role="form" action="{{ url('/user_update_password') }}" method="post">
 					<div class="form-group">
 					  <label for="password_old">Old Password</label>
 					  {{ csrf_field() }}

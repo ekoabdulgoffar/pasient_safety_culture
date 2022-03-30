@@ -15,7 +15,16 @@ class UserController extends Controller
 		} else if (session()->has('user_role') == true && session('user_role') != "Admin" ) {
 			return abort(404);
 		}
-		$data['ep_user'] = Users::All();
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = Users::All();
 		return view('management_of_user',$data);
 	}
 	
@@ -42,12 +51,12 @@ class UserController extends Controller
 		
 		$crud_result = 0;
 		$crud_message = '';
-		if ($db_password_old == myencrypt($request->input('password_old'), "EduriskPayment2022!")) {
+		if ($db_password_old == myencrypt($request->input('password_old'), "Pasientsafetyculture@2022")) {
 			if($request->input('password_new') == $request->input('password_confirm')) {
 				$result = Users::where([
 							['user_id', '=', session('user_id')],
 							['user_status', '=', '1']
-						])->update(['user_password' => myencrypt($request->input('password_new'), "EduriskPayment2022!")]);
+						])->update(['user_password' => myencrypt($request->input('password_new'), "Pasientsafetyculture@2022")]);
 				
 				if ($result > 0) {
 					$crud_result = 1;
@@ -77,7 +86,7 @@ class UserController extends Controller
 		if($password_new == $password_confirm) {
 			$result = Users::where([
 						['user_id', '=', $user_id]
-					])->update(['user_password' => myencrypt($password_new, "EduriskPayment2022!")]);
+					])->update(['user_password' => myencrypt($password_new, "Pasientsafetyculture@2022")]);
 			
 			if ($result > 0) {
 				$crud_result = 1;
@@ -88,7 +97,16 @@ class UserController extends Controller
 		}
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
-		$data['ep_user'] = Users::All();
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = Users::All();
 		return view('management_of_user',$data);
     }
 	
@@ -106,23 +124,32 @@ class UserController extends Controller
 		
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
-		$data['ep_user'] = Users::All();
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = Users::All();
 		return view('management_of_user',$data);
     }
 	
 	public function activation_account(Request $request)
     {
 		$username_activation = $request->input('username_activation');
-		$password_activation = mydecrypt($request->input('password_activation'), "EduriskPayment2022!");
+		$password_activation = mydecrypt($request->input('password_activation'), "Pasientsafetyculture@2022");
 		$name_activation = $request->input('name_activation');
 		$email_activation = $request->input('email_activation');
 		
 		// send mail
 		$to_name = $name_activation;
 		$to_email = $email_activation ;
-		$data = array('name'=>"EDURISK", "body" => "Test mail");
+		$data = array('name'=>"PSC", "body" => "Test mail");
 		$body_html = "
-			Thank you for your registration in Edurisk Payment.
+			Thank you for your registration in Pasient Safety Culture.
 			<br>
 			<br>
 			<b>Activation your account success!</b>
@@ -140,12 +167,12 @@ class UserController extends Controller
 			Thanks Regards,
 			<br>
 			<br>
-			Edurisk DRRC UI
+			Pasient Safety Culture
 		";
 		
 		Mail::send([], $data, function($message) use ($to_name, $to_email, $body_html) {
 			$message->to($to_email, $to_name)
-					->subject('Activation Account EDURISK Payment - DRRC UI')
+					->subject('Activation Account Pasient Safety Culture')
 					->setBody($body_html, 'text/html');
 		});
 		
@@ -168,14 +195,23 @@ class UserController extends Controller
 		
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
-		$data['ep_user'] = Users::All();
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = Users::All();
 		return view('management_of_user',$data);
     }
 	
 	public function insert_user(Request $request)
 	{
 		date_default_timezone_set('Asia/Jakarta'); // set time jakarta
-		$today = date("Y-m-d");
+		$today = date("Y-m-d H:i:s");
 		
 		$cek_data_user = Users::
             where([
@@ -190,19 +226,25 @@ class UserController extends Controller
 			
 			$data = array(
 					'user_username' => $request->input("user_username"),
-					'user_password' => myencrypt("Edurisk@".date('Y'), "EduriskPayment2022!"),
-					'user_name' => $user_name,
-					'user_date_of_born' => $request->input("user_date_of_born"),
-					'user_place_of_born' => $request->input("user_place_of_born"),
-					'user_gender' => $request->input("user_gender"),
-					'user_address' => $request->input("user_address"),
+					'user_password' => myencrypt("PSC@".date('Y'), "Pasientsafetyculture@2022"),
 					'user_email' => $request->input("user_email"),
+					'user_name' => $user_name,
 					'user_phone' => $request->input("user_phone"),
 					'user_status' => 1,
-					'user_modiby' => session('user_username'),
-					'user_modidate' => $today,
+					'user_created_by' => session('user_username'),
+					'user_modified_by' => "",
+					'user_created_date' => $today,
+					'user_modified_date' => null,
+					'user_npa' => $request->input("user_npa"),
+					'user_jenis_kelamin' => $request->input("user_jenis_kelamin"),
+					'user_tanggal_lahir' => $request->input("user_tanggal_lahir"),
+					'user_alamat' => $request->input("user_alamat"),
+					'user_pendidikan_terakhir' => $request->input("user_pendidikan_terakhir"),
+					'user_provinsi' => $request->input("user_provinsi"),
+					'user_cabang_keanggotaan' => $request->input("user_cabang_keanggotaan"),
+					'user_wilayah_keanggotaan' => $request->input("user_wilayah_keanggotaan"),
 					'user_role' => $role,
-					'user_institution' => $request->input("user_company")
+					'user_last_login' => null
 				);
 				$result = Users::insert($data);
 				
@@ -215,14 +257,23 @@ class UserController extends Controller
 		}
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
-		$data['ep_user'] = Users::All();
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = Users::All();
 		return view('management_of_user',$data);
 	}
 	
 	public function update_user(Request $request)
 	{
 		date_default_timezone_set('Asia/Jakarta'); // set time jakarta
-		$today = date("Y-m-d");
+		$today = date("Y-m-d H:i:s");
 		
 		$cek_data_user = Users::
             where([
@@ -232,17 +283,20 @@ class UserController extends Controller
 		if ($cek_data_user == null) {
 			$data = array(
 					//'user_username' => $request->input("user_username_update"),
-					'user_name' => $request->input("user_name_update"),
-					'user_date_of_born' => $request->input("user_date_of_born_update"),
-					'user_place_of_born' => $request->input("user_place_of_born_update"),
-					'user_gender' => $request->input("user_gender_update"),
-					'user_address' => $request->input("user_address_update"),
 					'user_email' =>$request->input("user_email_update"),
+					'user_name' => $request->input("user_name_update"),
 					'user_phone' => $request->input("user_phone_update"),
-					'user_modiby' => session('user_username'),
-					'user_modidate' => $today,
+					'user_tanggal_lahir' => $request->input("user_tanggal_lahir_update"),
+					'user_jenis_kelamin' => $request->input("user_jenis_kelamin_update"),
+					'user_alamat' => $request->input("user_alamat_update"),
+					'user_modified_by' => session('user_username'),
+					'user_modified_date' => $today,
 					'user_role' => $request->input("user_role_update"),
-					'user_institution' => $request->input("user_company_update")
+					'user_npa' => $request->input("user_npa_update"),
+					'user_pendidikan_terakhir' => $request->input("user_pendidikan_terakhir_update"),
+					'user_provinsi' => $request->input("user_provinsi_update"),
+					'user_cabang_keanggotaan' => $request->input("user_cabang_keanggotaan_update"),
+					'user_wilayah_keanggotaan' => $request->input("user_wilayah_keanggotaan_update")
 				);
 				$result = Users::where([
 					['user_id', '=', $request->input('id_update')]
@@ -260,7 +314,109 @@ class UserController extends Controller
 			
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
-		$data['ep_user'] = Users::All();
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = Users::All();
 		return view('management_of_user',$data);
 	}
+	
+	public function page_profile($id = null)
+    {
+		$get_user_id = mydecrypt($id,"Pasientsafetyculture@2022");
+		
+		$data_user_byID = Users::where([
+				['user_id', '=', $get_user_id]
+			])->get();
+		
+		/*$result = 0;
+		$crud_result = '';
+		$crud_message = '';
+		if ($result > 0) {
+			$crud_result = 1;
+			$crud_message = 'Data has been updated.';
+		}  else {$crud_message = 'Failed to update data.';}
+		
+		$data['crud_result'] = "";
+		$data['crud_message'] = "";*/
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['data_user_byID'] = $data_user_byID;
+		return view('page_profile',$data);
+    }
+	
+	public function updateProfile(Request $request)
+    {
+		date_default_timezone_set('Asia/Jakarta'); // set time jakarta
+		$today = date("Y-m-d H:i:s");
+		
+		$get_user_id = $request->input('id_update');
+		
+		$cek_data_user = Users::
+            where([
+				['user_username', '=', $request->input("user_username")]
+			])->first();
+		
+		if ($cek_data_user == null) {
+			$data = array(
+					//'user_username' => $request->input("user_username_update"),
+					'user_email' =>$request->input("user_email_update"),
+					'user_name' => $request->input("user_name_update"),
+					'user_phone' => $request->input("user_phone_update"),
+					'user_tanggal_lahir' => $request->input("user_tanggal_lahir_update"),
+					'user_jenis_kelamin' => $request->input("user_jenis_kelamin_update"),
+					'user_alamat' => $request->input("user_alamat_update"),
+					'user_modified_by' => session('user_username'),
+					'user_modified_date' => $today,
+					'user_role' => $request->input("user_role_update"),
+					'user_npa' => $request->input("user_npa_update"),
+					'user_pendidikan_terakhir' => $request->input("user_pendidikan_terakhir_update"),
+					'user_provinsi' => $request->input("user_provinsi_update"),
+					'user_cabang_keanggotaan' => $request->input("user_cabang_keanggotaan_update"),
+					'user_wilayah_keanggotaan' => $request->input("user_wilayah_keanggotaan_update")
+				);
+				$result = Users::where([
+					['user_id', '=', $request->input('id_update')]
+				])->update($data);
+
+			$crud_result = 0;
+			$crud_message = '';
+				if ($result > 0) {
+					$crud_result = 1;
+					$crud_message = 'Data has been updated.';
+				}  else {$crud_message = 'Failed to update data.';}
+		} else {
+			$crud_message = 'Username already exists.';
+		}
+			
+		$data['crud_result'] = $crud_result;
+		$data['crud_message'] = $crud_message;
+		
+		$data_user_byID = Users::where([
+				['user_id', '=', $get_user_id]
+			])->get();
+			
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['data_user_byID'] = $data_user_byID;
+		return view('page_profile',$data);
+    }
 }
