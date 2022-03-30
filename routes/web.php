@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\UserKuesionerController;
-
+use App\Http\Controllers\EdukasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +43,13 @@ Route::post('/management_of_user/user_update', [UserController::class, 'update_u
 Route::post('/management_of_user/user_update_status', [UserController::class, 'updateStatus']);
 Route::post('/management_of_user/reset_password', [UserController::class, 'resetPassword']);
 //-- End User
+
+//-- Start file edukasi
+Route::resource('/management_of_education', 'EdukasiController');
+Route::post('/management_of_education/education_insert', [EdukasiController::class, 'insert_education']);
+Route::post('/management_of_education/education_update', [EdukasiController::class, 'update_education']);
+Route::post('/management_of_education/education_delete', [EdukasiController::class, 'delete_education']);
+//-- End file edukasi
 
 // USER
 // USER

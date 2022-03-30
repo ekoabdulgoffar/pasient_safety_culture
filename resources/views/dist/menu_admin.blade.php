@@ -26,8 +26,8 @@
           <span>Management of Users</span>
         </a>
       </li>
-	  <li class="nav-item <?php echo Request::segment(1) == 'education_files' ? 'active' : '' ?>">
-        <a class="nav-link" href="#">
+	  <li class="nav-item <?php echo Request::segment(1) == 'management_of_education' ? 'active' : '' ?>">
+        <a class="nav-link" href="{{ url('/management_of_education') }}">
           <i class="fas fa-fw fa-book"></i>
           <span>Education Files</span>
         </a>

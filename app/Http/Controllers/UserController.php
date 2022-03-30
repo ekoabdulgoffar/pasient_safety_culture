@@ -30,14 +30,15 @@ class UserController extends Controller
 	
     public function updatePassword(Request $request)
     {
+		$get_id = mydecrypt(session('user_id'), "Pasientsafetyculture@2022");
 		$data = Users::where([
-				['user_id', '=', session('user_id')],
+				['user_id', '=', $get_id],
 				['user_status', '=', '1']
 			])->first();
 
 		$data_user = Users::
             where([
-				['user_id', '=', session('user_id')]
+				['user_id', '=', $get_id]
 			])->first();
 		
 		$user_password = $data_user->user_password;
@@ -54,7 +55,7 @@ class UserController extends Controller
 		if ($db_password_old == myencrypt($request->input('password_old'), "Pasientsafetyculture@2022")) {
 			if($request->input('password_new') == $request->input('password_confirm')) {
 				$result = Users::where([
-							['user_id', '=', session('user_id')],
+							['user_id', '=', $get_id],
 							['user_status', '=', '1']
 						])->update(['user_password' => myencrypt($request->input('password_new'), "Pasientsafetyculture@2022")]);
 				
