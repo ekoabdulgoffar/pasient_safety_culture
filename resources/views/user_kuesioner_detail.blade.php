@@ -14,7 +14,7 @@ SIM PERIKAR | Detail Kuesioner
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h5 mb-0 text-gray-800">{{$kuesioner['kuesioner_deskripsi']}}</h1>
   <ol class="breadcrumb">
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ url('/user-kuesioner') }}">Riwayat Kuesioner</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ url('/user-kuesioner') }}">Questionnaire History</a></li>
     <li class="breadcrumb-item active" aria-current="page">Detail Kuesioner - {{$kuesioner['kuesioner_deskripsi']}}</li>
   </ol>
 </div>

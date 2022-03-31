@@ -24,7 +24,7 @@
       <li class="nav-item <?php echo Request::segment(1) == 'user-kuesioner' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-kuesioner') }}">
           <i class="fa fa-history" aria-hidden="true"></i>
-          <span>Riwayat Kuesioner</span>
+          <span>Questionnaire History</span>
         </a>
       </li>
       <li class="nav-item <?php echo Request::segment(1) == 'user-kuesioner' ? 'active' : '' ?>">

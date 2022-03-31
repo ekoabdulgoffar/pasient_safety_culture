@@ -14,7 +14,7 @@
   <ol class="breadcrumb">
 	<li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Pasient Safety Culture</a></li>
     <li class="breadcrumb-item active" aria-current="page">Post test</li>
-    {{-- <li class="breadcrumb-item active" aria-current="page">Riwayat Kuesioner</li> --}}
+    {{-- <li class="breadcrumb-item active" aria-current="page">Questionnaire History</li> --}}
   </ol>
 </div>
 @endsection 
@@ -30,24 +30,27 @@
       </div>
       <div class="col">
         <p class="float-right">
-          Selamat mengerjakan
+          Have a great time doing it
         </p>
       </div>
     </div>
-    @foreach ($pertanyaan as $key=>$item)
-    <div style="background-color: whitesmoke" class="p-2">      
-      <b>{{$key+1}}. {{$item['pertanyaan_post_']}}</b>
-      <br>
-      @foreach (json_decode($item['pertanyaan_post_pilihan'], true) as $p)
-        <input class="ml-3" type="radio" name="ans-{{$item['pertanyaan_post_id']}}" id="">&nbsp;&nbsp;{{$p}}
+    <form action="submit-post-test" method="post">
+      @csrf
+      @foreach ($pertanyaan as $key=>$item)
+      <div style="background-color: whitesmoke" class="p-2">      
+        <b>{{$key+1}}. {{$item['pertanyaan_post_']}}</b>
         <br>
+        @foreach (json_decode($item['pertanyaan_post_pilihan'], true) as $index=>$p)
+          <input class="ml-3" type="radio" value="{{$index}}" name="ans-{{$item['pertanyaan_post_id']}}" id="" required> &nbsp; &nbsp;{{$p}}
+          <br>
+        @endforeach
+      </div>
+      <br>
       @endforeach
-    </div>
-    <br>
-    @endforeach
-    <a href="pembelajaran" class="btn btn-secondary">Kembali</a>
-    <input type="button" value="Kirim jawaban" class="btn btn-primary">
-    <p class="text-center">- Selamat mengerjakan -</p>
+      <a href="pembelajaran" class="btn btn-secondary">Back</a>
+      <input type="submit" value="Send" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this answer?')">
+      <p class="text-center">- Have a great time doing it -</p>
+    </form>
   </div>
 </div>
     

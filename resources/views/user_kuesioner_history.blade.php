@@ -1,7 +1,7 @@
 @extends('dist.layout') 
 
 @section('title')
-    PSC 2022 | Riwayat Kuesioner
+    PSC 2022 | Questionnaire History
 @endsection
 
 @section('menu')
@@ -10,44 +10,50 @@
 
 @section('content-header-info')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h5 mb-0 text-gray-800">Riwayat Kuesioner</h1>
+  <h1 class="h5 mb-0 text-gray-800">Questionnaire History</h1>
   <ol class="breadcrumb">
 	<li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Pasient Safety Culture</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Riwayat Kuesioner</li>
-    {{-- <li class="breadcrumb-item active" aria-current="page">Riwayat Kuesioner</li> --}}
+    <li class="breadcrumb-item active" aria-current="page">Questionnaire History</li>
+    {{-- <li class="breadcrumb-item active" aria-current="page">Questionnaire History</li> --}}
   </ol>
 </div>
 @endsection 
 
 @section('content')
+@php
+    $alasan = 'This happens because your previous questionnaire did not meet the requirements, please do the learning program first'
+@endphp
+
 @if ($data != null)
-  @if ($data[count($data)-1]['mean_total_skor'] < 80)
-  <div class="alert alert-light alert-dismissible" role="alert">
-    <div class="row">
-      <div class="col-md-2">
-        <img src="{{asset('assets/svg/post_test.svg')}}" alt="" srcset="" class="card-img">
-      </div>
-      <div class="col-md-10">
-        <h4 class="font-weight-bold">PENTING !!</h4>
-        <p>
-          Berdasarkan hasil pencapaian anda pada pengisian kuesioner sebelumnya
-          <br>
-          Anda dinyatakan :
-        </p>
-        @php
-            $post = 'Prosedur post test adalah suatu evaluasi akhir dalam bentuk pertanyaan yang penulis berikan kepada masyarakat sasaran setelah pelajaran/materi telah tersampaikan. Jenis tes yang digunakan yaitu tes objektif';
-            $pemb = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta voluptates labore obcaecati vitae. Odit, cupiditate.'
-        @endphp
-        <ul>
-          <li>Tidak mencapai nilai target, yaitu 60</li>
-          <li>Diharuskan untuk mengikuti <span style="color: blue;" title="{{$pemb}}">program pembelajaran</span></li>
-          <li>Diharuskan untuk melaksanakan <span style="color: blue;" title="{{$post}}">post test</span> terkait program pembelajaran</li>
-          <li>Diharuskan untuk mengisi kuesioner kembali pada tab 'Daftar Kuesioner'</li>
-        </ul>
-        <a href="pembelajaran" class="btn btn-primary">Menuju halaman pembelajaran</a>
+  @if ($data[count($data)-1]['mean_total_skor'] < $skor[0]['skor_max'])
+    @if ($post_test['respon_post_status'] == 0 || $post_test == null)
+    <div class="alert alert-light alert-dismissible" role="alert">
+      <div class="row">
+        <div class="col-md-2">
+          <img src="{{asset('assets/svg/post_test.svg')}}" alt="" srcset="" class="card-img">
+        </div>
+        <div class="col-md-10">
+          <h4 class="font-weight-bold">URGENT !!</h4>
+          <p>
+            Based on your achievements in filling out the previous questionnaire
+            <br>
+            You stated that :
+          </p>
+          @php
+              $post = 'The post test procedure is the final evaluation in the form of questions that the author gives to the target community after the lesson/material has been delivered. The type of test used is an objective test';
+              $pemb = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta voluptates labore obcaecati vitae. Odit, cupiditate.'
+          @endphp
+          <ul>
+            <li>Did not reach the target value of {{$skor[0]['skor_max']}}</li>
+            <li>Required to follow <span style="color: blue;" title="{{$pemb}}">the learning program</span></li>
+            <li>Required to carry out a <span style="color: blue;" title="{{$post}}">post test</span> related to the learning program</li>
+            <li>Required to fill out the questionnaire again on the tab 'Questionnaire List'</li>
+          </ul>
+          <a href="pembelajaran" class="btn btn-primary">Go to the learning program page</a>
+        </div>
       </div>
     </div>
-  </div>
+    @endif
   @endif  
 @endif
 
@@ -57,10 +63,10 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
 			<li class="nav-item ">
-        <a class="nav-link active" data-toggle="tab" href="#rps">Riwayat Pengisian Saya</a>
+        <a class="nav-link active" data-toggle="tab" href="#rps">My Questionnaire Filling History</a>
       </li>
 			<li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#dk">Daftar Kuesioner</a>
+        <a class="nav-link" data-toggle="tab" href="#dk">Questionnaire List</a>
       </li>
 		</ul>
   </div>
@@ -71,7 +77,7 @@
         <table class="table align-items-center table-flush table-hover nowrap" id="dataTable">
           <thead class="">
           <th>No</th>
-          <th>Waktu pengisian</th>
+          <th>Filling time</th>
           <th>x̄ Kerja Tim</th>
           <th>x̄ Safety</th>
           <th>x̄ Kepuasan Kerja</th>
@@ -103,39 +109,58 @@
         <table class="table align-items-center table-flush table-hover nowrap" id="dataTable2">
           <thead class="">
           <th>No</th>
-          <th>Kuesioner</th>
-          <th>Dipublish</th>
-          <th>Aksi</th>
+          <th>Questionnaire</th>
+          <th>Published</th>
+          <th>Action</th>
           </thead>
           <tbody>
           <?php
             foreach ($data2 as $key=>$d) {
           ?>
           <tr>
-            <td>{{$key+1}}.</td>
-            <td>{{$d['kuesioner_deskripsi']}}</td>
-            <td>{{ date("d/m/Y", strtotime($d['kuesioner_created_date']));}}</td>
-            <td>
-              <?php
-                if($d['status'] == 0){
-              ?>
-                <a href="user-kuesioner/isi/{{myencrypt($d['kuesioner_id'],"Pasientsafetyculture@2022")}}" class="btn btn-primary" title="Beri response saya">
-                  Isi Sekarang &nbsp;
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </a>
-                <?php
-                }
-                else{
-                ?>
-                <p>Minggu ini anda sudah mengisi kuesioner</p>
-                <?php
-                }
-                ?>
+            <td class="align-middle">{{$key+1}}.</td>
+            <td class="align-middle">{{$d['kuesioner_deskripsi']}}</td>
+            <td class="align-middle">{{ date("d/m/Y", strtotime($d['kuesioner_created_date']));}}</td>
+            <td class="align-middle">
+              @if ($data != null && $data[count($data)-1]['mean_total_skor'] <  $skor[0]['skor_max'] && ($post_test['respon_post_status'] == 0 || $post_test == null))
+              <p>
+                You cannot fill out this questionnaire 
+                
+                <span class="fa fa-info-circle" data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer"></span>
+              </p>
+              @else
+              <a href="user-kuesioner/isi/{{myencrypt($d['kuesioner_id'],"Pasientsafetyculture@2022")}}" class="btn btn-primary" title="Beri response saya">
+                Fill Now &nbsp;
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </a>
+              @endif
             </td>
           </tr>
           <?php } ?>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-dark" style="background-color: #e3eaef">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-bold" id="exampleModalLongTitle">
+          Information
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mb-3">
+        <div class="d-flex justify-content-center">
+          <img class="card-img text-center col-md-8" src="{{asset('assets/svg/info.svg')}}"/>
+        </div>
+        <br>
+        {{$alasan}}
       </div>
     </div>
   </div>
