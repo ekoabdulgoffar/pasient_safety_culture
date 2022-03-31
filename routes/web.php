@@ -8,6 +8,7 @@ use App\Http\Controllers\UserKuesionerController;
 use App\Http\Controllers\PostTestController;
 use App\Http\Controllers\PembelajaranController;
 use App\Http\Controllers\EdukasiController;
+use App\Http\Controllers\UserPostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,4 +82,9 @@ Route::post('/submit-post-test', [PostTestController::class, 'submitPostTest']);
 Route::get('/post-test-result', [PostTestController::class, 'showResult']);
 // END POST TEST
 
+// HISTORY POST TEST
+Route::resource('/user-post-test', 'UserPostController');
+Route::get('/post-test-result/{id}', [UserPostController::class, 'showResult']);
+
+// TESTIN GROUTE
 Route::view('/tes', 'user_post_test_result');

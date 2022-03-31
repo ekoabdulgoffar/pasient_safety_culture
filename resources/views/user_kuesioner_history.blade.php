@@ -23,42 +23,6 @@
 @php
     $alasan = 'This happens because your previous questionnaire did not meet the requirements, please do the learning program first'
 @endphp
-
-@if ($data != null)
-  @if ($data[count($data)-1]['mean_total_skor'] < $skor[0]['skor_max'])
-    @if ($post_test['respon_post_status'] == 0 || $post_test == null)
-    <div class="alert alert-light alert-dismissible" role="alert">
-      <div class="row">
-        <div class="col-md-2">
-          <img src="{{asset('assets/svg/post_test.svg')}}" alt="" srcset="" class="card-img">
-        </div>
-        <div class="col-md-10">
-          <h4 class="font-weight-bold">URGENT !!</h4>
-          <p>
-            Based on your achievements in filling out the previous questionnaire
-            <br>
-            You stated that :
-          </p>
-          @php
-              $post = 'The post test procedure is the final evaluation in the form of questions that the author gives to the target community after the lesson/material has been delivered. The type of test used is an objective test';
-              $pemb = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta voluptates labore obcaecati vitae. Odit, cupiditate.'
-          @endphp
-          <ul>
-            <li>Did not reach the target value of {{$skor[0]['skor_max']}}</li>
-            <li>Required to follow <span style="color: blue;" title="{{$pemb}}">the learning program</span></li>
-            <li>Required to carry out a <span style="color: blue;" title="{{$post}}">post test</span> related to the learning program</li>
-            <li>Required to fill out the questionnaire again on the tab 'Questionnaire List'</li>
-          </ul>
-          <a href="pembelajaran" class="btn btn-primary">Go to the learning program page</a>
-        </div>
-      </div>
-    </div>
-    @endif
-  @endif  
-@endif
-
-
-
 <div class="card">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
@@ -75,7 +39,7 @@
     <div id="rps" class="tab-pane active">
       <div class="table-responsive p-3 table-striped">
         <table class="table align-items-center table-flush table-hover nowrap" id="dataTable">
-          <thead class="">
+          <thead>
           <th>No</th>
           <th>Filling time</th>
           <th>x̄ Kerja Tim</th>
@@ -165,5 +129,5 @@
     </div>
   </div>
 </div>
-
+<br>
 @endsection

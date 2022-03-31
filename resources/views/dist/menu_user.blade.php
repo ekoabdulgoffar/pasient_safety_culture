@@ -27,10 +27,10 @@
           <span>Questionnaire History</span>
         </a>
       </li>
-      <li class="nav-item <?php echo Request::segment(1) == 'user-kuesioner' ? 'active' : '' ?>">
-        <a class="nav-link" href="">
-          <i class="fa fa-history" aria-hidden="true"></i>
-          <span>Riwayat Post Test</span>
+      <li class="nav-item <?php echo Request::segment(1) == 'user-post-test' ? 'active' : '' ?>">
+        <a class="nav-link" href="{{ url('/user-post-test') }}">
+          <i class="fa fa-tasks" aria-hidden="true"></i>
+          <span>Post Test History</span>
         </a>
       </li>
       <hr class="sidebar-divider">
