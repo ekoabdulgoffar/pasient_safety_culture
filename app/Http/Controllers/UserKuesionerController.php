@@ -9,6 +9,10 @@ use App\Models\Dt_dkuesioner;
 use App\Models\Dt_drespon;
 use App\Models\Ms_kelompok_pertanyaan;
 use App\Models\Ms_pertanyaan;
+use App\Models\Ms_file_edukasi;
+use App\Models\Tr_edukasi;
+use App\Models\Tr_respon_post;
+use App\Models\Ms_skor;
 
 
 class UserKuesionerController extends Controller
@@ -27,8 +31,7 @@ class UserKuesionerController extends Controller
         $kelompok = Ms_kelompok_pertanyaan::get();
         // get data response        
         $data_responses = Tr_respon::where('user_id',mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
-        ->get() ;
-        
+        ->get() ;        
 
         foreach($data_responses as $data_response){
             $hasil = 0;
@@ -64,11 +67,14 @@ class UserKuesionerController extends Controller
             $skor_mean = [];
 
             foreach ($skor as $key=>$s) {
-                $jumlah = count(Ms_pertanyaan::where('kelompok_pertanyaan_id', $key)->get());
-                if($jumlah != 0 && $s != 0){
-                    array_push($skor_mean, $this->getMean($s, $jumlah));
-                }else{
-                    array_push($skor_mean, -1);
+                // key 1 adalah kelompok pribadi, kita tidak butuh itu
+                if($key!=1){
+                    $jumlah = count(Ms_pertanyaan::where('kelompok_pertanyaan_id', $key)->get());
+                    if($jumlah != 0){
+                        array_push($skor_mean, $this->getMean($s, $jumlah));
+                    }else{
+                        array_push($skor_mean, -1);
+                    }
                 }
             }
             
@@ -84,6 +90,18 @@ class UserKuesionerController extends Controller
         }
         $pass['data'] = $data;
 
+        // get data post test, apakah sudah menyelesaikan atau belum
+        $last_post = Tr_respon_post::where('user_id', mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
+        ->orderBy('respon_post_datetime', 'desc')
+        ->first();
+
+        if($data != null){
+            if($data[count($data)-1]['respon']['respon_datetime'] < $last_post['respon_post_datetime']){
+                $pass['post_test'] = $last_post;
+            }else{
+                $pass['post_test'] = null;
+            }
+        }
         // Tab ke 2
         
         // get data kuesioner
@@ -105,13 +123,13 @@ class UserKuesionerController extends Controller
                 'kuesioner_created_by' => $data_kuesioner['kuesioner_created_by'],
                 'kuesioner_modified_by' => $data_kuesioner['kuesioner_modified_by'],
                 'kuesioner_created_date' => $data_kuesioner['kuesioner_created_date'],
-                'kuesioner_modified_date' => $data_kuesioner['kuesioner_modified_date'],
-                'status' => 0
+                'kuesioner_modified_date' => $data_kuesioner['kuesioner_modified_date'],                
             ];
             array_push($kuesioners, $format);
         }
         $pass['data2'] = $kuesioners;
 
+        $pass['skor'] = Ms_skor::get();
         return view('user_kuesioner_history', $pass);
     }
 
@@ -161,6 +179,7 @@ class UserKuesionerController extends Controller
         if (!session()->has('user_id')) {
 			return redirect('login');
 		};
+        date_default_timezone_set('Asia/Jakarta'); // set time jakarta
         
         // get data pertanyaan
         $pertanyaan = $this->getListPertanyaanByKuesionerId($request['kuesioner_id']);
@@ -177,10 +196,9 @@ class UserKuesionerController extends Controller
         }
         $pertanyaan = $pertanyaan_urut_by_kelompok_jenis;
 
-
         // insert row pada tr_respon
         $insert = [
-            'user_id' => mydecrypt(session('user_id'), "Pasientsafetyculture@2022"),
+            'user_id' => (int) mydecrypt(session('user_id'), "Pasientsafetyculture@2022"),
             'respon_datetime' => date('Y-m-d H:i:s')
         ];        
         $tr_respon = Tr_respon::create($insert);
@@ -198,6 +216,41 @@ class UserKuesionerController extends Controller
         }
 
         // return $request;
+        // Check apakah respon lebih dari 60
+
+        $kelompok = Ms_kelompok_pertanyaan::get();
+        
+        $total_skor = 0;
+        $jumlah_pertanyaan = 0;
+
+        $kuesioner = $this->getKuesionerByResponId($tr_respon['id']);
+        $jawaban = Dt_drespon::where('respon_id', $tr_respon['id'])->get();
+        
+        foreach ($jawaban as $key => $j) {
+            $dt_dkuesioner = Dt_dkuesioner::where('dkuesioner_id',$j['dkuesioner_id'])->first();
+            $pertanyaan = Ms_pertanyaan::where('pertanyaan_id', $dt_dkuesioner['pertanyaan_id'])->first();
+            foreach ($kelompok as $k) {
+                if($k['kelompok_pertanyaan_deskripsi'] != 'Pribadi'){
+                    if($pertanyaan['kelompok_pertanyaan_id'] == $k['kelompok_pertanyaan_id']){
+                        $total_skor+=$j['drespon_jawaban'];
+                        $jumlah_pertanyaan++;
+                        break;
+                    }
+                }
+            }                
+        }
+        
+        $total_skor = $this->getMean($total_skor,$jumlah_pertanyaan);
+        if($total_skor < 60){
+            $tr_edukasi = [
+                'edu_id' => Ms_file_edukasi::orderBy('edu_id', 'desc')->first()['edu_id'],
+                'user_id' => (int) mydecrypt(session('user_id'), "Pasientsafetyculture@2022"),
+                'tr_edu_isPdf' => 0,
+                'tr_edu_isVideo' => 0,
+                'datetime_update' => date('Y-m-d H:i:s')
+            ];
+            Tr_edukasi::create($tr_edukasi);
+        }
         return redirect('user-kuesioner');
     }
 

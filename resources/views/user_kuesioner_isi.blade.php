@@ -12,7 +12,7 @@ PSC 2022 | Isi Kuesioner
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h5 mb-0 text-gray-800">{{$kuesioner['kuesioner_deskripsi']}}</h1>
   <ol class="breadcrumb">
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ url('/user-kuesioner') }}">Riwayat Kuesioner</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ url('/user-kuesioner') }}">Questionnaire History</a></li>
     <li class="breadcrumb-item active" aria-current="page">Isi Kuesioner - {{$kuesioner['kuesioner_deskripsi']}}</li>
   </ol>
 </div>
@@ -103,9 +103,9 @@ PSC 2022 | Isi Kuesioner
   }
   ?>
   <a href="{{ url('/user-kuesioner') }}" class="btn btn-secondary">
-    Kembali
+    Back
   </a>
-  <input type="submit" value="Selesai" class="btn btn-primary" onclick="return confirm('Apakah anda yakin ingin mengirimkan jawaban ini?')" />
+  <input type="submit" value="Finish" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this answer?')" />
 </form>
 <br>
 <script src="{{ asset('assets/js/user_isi_kuesioner.js') }}"></script>

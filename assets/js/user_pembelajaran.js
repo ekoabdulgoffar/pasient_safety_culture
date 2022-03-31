@@ -1,4 +1,4 @@
-function tes(id){
+function changeBorder(id){
   var element1 = document.getElementById('link1');
   var element2 = document.getElementById('link2');
   if(id === 1){

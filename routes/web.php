@@ -77,4 +77,8 @@ Route::post('/update-pembelajaran/{id}', [PembelajaranController::class, 'update
 
 // POST TEST
 Route::resource('/post-test', 'PostTestController');
+Route::post('/submit-post-test', [PostTestController::class, 'submitPostTest']);
+Route::get('/post-test-result', [PostTestController::class, 'showResult']);
 // END POST TEST
+
+Route::view('/tes', 'user_post_test_result');
