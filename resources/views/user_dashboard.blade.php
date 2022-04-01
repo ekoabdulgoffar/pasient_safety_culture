@@ -64,7 +64,7 @@
   <div class="card-body">
     <div class="card-title h6 font-weight-bold">Your last activity</div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 mb-3 mb-md-0">
         <div class="card card-body">
           <p class="font-weight-bold">Completed Questionnaire</p>
           <table>
@@ -115,6 +115,7 @@
           </table>
         </div>
       </div>
+      
       <div class="col-md-6">
         <div class="card card-body">
           <p class="font-weight-bold">Completed Post Test</p>
