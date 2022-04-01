@@ -14,7 +14,7 @@
       <li class="nav-item <?php echo Request::segment(1) == 'user-dashboard' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Beranda</span></a>
+          <span>Home</span></a>
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">

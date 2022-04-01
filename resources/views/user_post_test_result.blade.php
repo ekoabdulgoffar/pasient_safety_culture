@@ -23,7 +23,7 @@
 @section('content')
 @php
     if(!isset($nilai)){
-      $nilai = 80;
+      $nilai = 59;
     }
 @endphp
 @if ($nilai > 60)
@@ -40,7 +40,11 @@
         <small>Congratulations !!!</small>
         @if (!isset($history))
         <br>
-        <small>Now you can fill out the questionnaire again <a href="user-kuesioner/isi/{{myencrypt(1,"Pasientsafetyculture@2022")}}">click here</a></small>
+        <small>
+          You can fill out the questionnaire again by clicking <kbd>Click here</kbd> button below
+        </small>
+        <br>
+        <a class="mt-3 btn btn-primary" href="user-kuesioner/isi/{{myencrypt(1,"Pasientsafetyculture@2022")}}">Click here</a>
         @else
         <br>
         <br>
@@ -64,7 +68,11 @@
         <small>Sorry, your results were too low to fill out the questionnaire again.</small>
         @if (!isset($history))    
         <br>
-        <small>You can repeat the learning program by clicking <a href="pembelajaran">here</a></small>
+        <small>
+          You can repeat the learning program by clicking <kbd>Click here</kbd> button below
+        </small>
+        <br>
+        <a class="btn btn-primary mt-3" href="pembelajaran">Click here</a>
         @else
         <br>
         <br>
@@ -75,4 +83,5 @@
   </div>
 </div>
 @endif
+<br>
 @endsection
