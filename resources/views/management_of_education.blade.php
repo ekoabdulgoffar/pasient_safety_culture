@@ -66,12 +66,13 @@
 					  <table class="table align-items-center table-flush table-hover nowrap" id="dataTableHover">
 						<thead class="thead-light">
 						<tr>
-						  <th>No.</th>
-						  <th>Description of PDF File</th>
-						  <th>Link of PDF File</th>
-						  <th>Description of Video File</th>
-						  <th>Link of Video File</th>
-						  <th>Action</th>
+						  <th style="text-align: center;">No.</th>
+						  <th style="text-align: center;">Category of File</th>
+						  <th style="text-align: center;">Description of PDF File</th>
+						  <th style="text-align: center;">Link of PDF File</th>
+						  <th style="text-align: center;">Description of Video File</th>
+						  <th style="text-align: center;">Link of Video File</th>
+						  <th style="text-align: center;">Action</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -83,19 +84,26 @@
 													<?php echo $i ?>
 												</td>
 												<td>
-													<?php echo $ou->edu_desk_pdf ?>
+													<?php echo $ou->edu_category ?>
 												</td>
 												<td>
-													<?php echo $ou->edu_file_pdf ?>
+													<?php echo $ou->edu_desk_pdf ?>
+												</td>
+												<td style="text-align: center">
+													<a href="#" onclick="copyLink('<?php echo $ou->edu_file_pdf ?>')">
+														<i class="fa fa-copy"></i>
+													</a>
 												</td>
 												<td>
 													<?php echo $ou->edu_desk_video ?>
 												</td>
-												<td>
-													<?php echo $ou->edu_file_video ?>
+												<td style="text-align: center">
+													<a href="#" onclick="copyLink('<?php echo $ou->edu_file_video ?>')">
+														<i class="fa fa-copy"></i>
+													</a>
 												</td>
 												<td>
-													<a href="#" onclick="preview_edit('<?php echo $ou->edu_id ?>','<?php echo $ou->edu_desk_pdf ?>','<?php echo $ou->edu_file_pdf ?>','<?php echo $ou->edu_desk_video ?>','<?php echo $ou->edu_file_video ?>'
+													<a href="#" onclick="preview_edit('<?php echo $ou->edu_id ?>','<?php echo $ou->edu_desk_pdf ?>','<?php echo $ou->edu_file_pdf ?>','<?php echo $ou->edu_desk_video ?>','<?php echo $ou->edu_file_video ?>','<?php echo $ou->edu_category ?>'
 													)" 
 														data-toggle="modal" data-target="#modal-edit">
 														<i class="fa fa-edit" title="Update"></i>
@@ -156,6 +164,15 @@
 						  <label for="edu_file_video">Link of Video File</label>
 						  <input type="text" class="form-control" id="edu_file_video" name="edu_file_video" placeholder="Example: https://link-video.com" required>
 						</div>
+						<div class="form-group">
+						  <label for="edu_category">Category File Education</label>
+						  <select name="edu_category" id="edu_category" 
+							class="form-control" style="width:100%;" required>
+								<option value="">--Select One--</option>
+								<option value="Pretest">Pretest</option>
+								<option value="Posttest">Posttest</option>
+							</select>
+						</div>
 					   </div>
 					  <!-- /.box-body -->
 			  </div>
@@ -202,6 +219,15 @@
 						<div class="form-group">
 						  <label for="edu_file_video_update">Link of Video File</label>
 						  <input type="text" class="form-control" id="edu_file_video_update" name="edu_file_video_update" placeholder="Example: https://link-video.com" required>
+						</div>
+						<div class="form-group">
+						  <label for="edu_category_update">Category File Education</label>
+						  <select name="edu_category_update" id="edu_category_update" 
+							class="form-control" style="width:100%;" required>
+								<option value="">--Select One--</option>
+								<option value="Pretest">Pretest</option>
+								<option value="Posttest">Posttest</option>
+							</select>
 						</div>
 					   </div>
 					  <!-- /.box-body -->
@@ -256,18 +282,26 @@
     </a>
     @include('dist.js')
 	 <script>
-		function preview_edit(id_update,edu_desk_pdf,edu_file_pdf,edu_desk_video,edu_file_video){
+		function preview_edit(id_update,edu_desk_pdf,edu_file_pdf,edu_desk_video,edu_file_video,edu_category){
 		  //alert(id);
 		  document.getElementById("id_update").value = id_update;
 		  document.getElementById("edu_desk_pdf_update").value = edu_desk_pdf;
 		  document.getElementById("edu_file_pdf_update").value = edu_file_pdf;
 		  document.getElementById("edu_desk_video_update").value = edu_desk_video;
 		  document.getElementById("edu_file_video_update").value = edu_file_video;
+		  document.getElementById("edu_category_update").value = edu_category;
 	  }
 	  function preview_delete(id){
 			  //alert(id);
 			  document.getElementById("id_delete").value = id;
 		}
+		
+	   function copyLink(text) {
+		  navigator.clipboard.writeText(text);
+		  /* Alert the copied text */
+		  alert("Copied the text: " + text);
+		}
+
   </script>
   </body>
 </html>

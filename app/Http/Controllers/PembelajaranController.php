@@ -21,7 +21,8 @@ class PembelajaranController extends Controller
         ->orderBy('datetime_update','desc')
         ->first();
 
-        $file = Ms_file_edukasi::first();
+        $file = Ms_file_edukasi::where('edu_category', 'Posttest')
+		->first();
         
         $pass['file'] = $file;
         $pass['edukasi'] = $edukasi;

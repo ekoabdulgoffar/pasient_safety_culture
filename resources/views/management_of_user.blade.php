@@ -220,6 +220,7 @@
 								<option value="">--Select One--</option>
 								<option value="Admin">Admin</option>
 								<option value="User">User</option>
+								<option value="Dokter Gigi">Dokter Gigi</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -340,9 +341,10 @@
 						  <label for="user_role_update">Role</label>
 						  <select name="user_role_update" id="user_role_update" 
 							class="form-control" style="width:100%;" required>
-								<option value="null">--Select One--</option>
+								<option value="">--Select One--</option>
 								<option value="Admin">Admin</option>
 								<option value="User">User</option>
+								<option value="Dokter Gigi">Dokter Gigi</option>
 							</select>
 						</div>
 						<div class="form-group">

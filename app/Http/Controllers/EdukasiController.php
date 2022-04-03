@@ -32,12 +32,14 @@ class EdukasiController extends Controller
 		$edu_file_pdf = $request->input("edu_file_pdf");
 		$edu_desk_video = $request->input("edu_desk_video");
 		$edu_file_video = $request->input("edu_file_video");
+		$edu_category = $request->input("edu_category");
 		
 		$data = array(
 				'edu_desk_pdf' => $edu_desk_pdf,
 				'edu_file_pdf' => $edu_file_pdf,
 				'edu_desk_video' => $edu_desk_video,
 				'edu_file_video' => $edu_file_video,
+				'edu_category' => $edu_category
 			);
 		$result = Ms_file_edukasi::insert($data);
 		
@@ -65,12 +67,14 @@ class EdukasiController extends Controller
 		$edu_file_pdf = $request->input("edu_file_pdf_update");
 		$edu_desk_video = $request->input("edu_desk_video_update");
 		$edu_file_video = $request->input("edu_file_video_update");
+		$edu_category = $request->input("edu_category_update");
 		
 		$data = array(
 				'edu_desk_pdf' => $edu_desk_pdf,
 				'edu_file_pdf' => $edu_file_pdf,
 				'edu_desk_video' => $edu_desk_video,
 				'edu_file_video' => $edu_file_video,
+				'edu_category' => $edu_category
 			);
 		$result = Ms_file_edukasi::where([
 					['edu_id', '=', $request->input('id_update')]

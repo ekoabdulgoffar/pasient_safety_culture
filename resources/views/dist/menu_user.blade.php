@@ -20,7 +20,14 @@
       <div class="sidebar-heading">
         Menu
       </div>
-
+		
+	  <li class="nav-item <?php echo Request::segment(1) == 'user-introduction' ? 'active' : '' ?>">
+        <a class="nav-link" href="{{ url('/user-introduction') }}">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <span>Introduction</span>
+        </a>
+      </li>
+		
       <li class="nav-item <?php echo Request::segment(1) == 'user-kuesioner' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-kuesioner') }}">
           <i class="fa fa-history" aria-hidden="true"></i>

@@ -59,7 +59,7 @@ class LoginController extends Controller
 				 
 				if ($role == "Admin"){
 					return redirect('Dashboard');
-				} else if ($role == "User"){
+				} else if ($role == "User" || $role == "Dokter Gigi"){
 					return redirect('user-dashboard');
 				}
 			} else if ($request->input('username') == 'admin' && $request->input('password') == '123') {

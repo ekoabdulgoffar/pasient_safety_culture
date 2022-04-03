@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon">
-  <title>SIPERIKAR | Login</title>
+  <title>PSC | Login</title>
   <link href="{{ asset('assets-ruang-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets-ruang-admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets-ruang-admin/css/ruang-admin.min.css') }}" rel="stylesheet">
@@ -50,10 +50,10 @@
                     <h1 class="h4 text-gray-900 mb-4"><b>Login</b>
 					<br><br/>
 					<span>
-						<b>Sistem Pasient Safety Culture</b>
+						<b>Information System for Pasient Safety Culture</b>
 					</span>
 					<br/><br/>
-					<img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}" alt="logo-drrc" style="width: 100px; height: auto;">
+					<!--<img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}" alt="logo-drrc" style="width: 100px; height: auto;">-->
 					</h1>
                   </div>
 				  <?php if (isset($crud_result)) {
@@ -92,9 +92,9 @@
                     </div>
                   </form>
                   
-                  <div class="text-center">
+                  <!--<div class="text-center">
 					Don't have an account ? <a href="#" data-toggle="modal" data-target="#modal-default">Register</a>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
