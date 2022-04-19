@@ -97,7 +97,23 @@
                   @endif
                 </a>
               </li>
-              <li class="nav-item ">
+                @php
+                    $info = "You have to press the understand button on the learning material to fill out the questionnaire again";
+                @endphp
+              <li title="{{$info}}">
+                @if ($edukasi['tr_edu_isPdf'] == 1 && $edukasi['tr_edu_isVideo'] == 1)
+                <a class="nav-link" href="{{ url('/user-dashboard') }}">
+                  Finish
+                  <span class="float-right fa fa-lock-open"></span>
+                </a>
+                @else
+                <a class="nav-link disabled" href="">
+                  Finish
+                  <span class="float-right fa fa-lock"></span>
+                </a>
+                @endif
+              </li>
+              {{-- <li class="nav-item ">
                 @if ($edukasi['tr_edu_isPdf'] == 1 && $edukasi['tr_edu_isVideo'] == 1)
                 <a class="nav-link" href="post-test">
                   Go to the post test page
@@ -109,7 +125,7 @@
                   <span class="float-right fa fa-lock"></span>
                 </a>
                 @endif
-              </li>
+              </li> --}}
             </ul>
           </div>
         </div>

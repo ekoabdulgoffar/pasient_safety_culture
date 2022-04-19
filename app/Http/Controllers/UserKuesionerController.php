@@ -24,6 +24,17 @@ class UserKuesionerController extends Controller
 			return redirect('login');
 		}
 
+        // get data response        
+        $data_responses = Tr_respon::where('user_id',mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
+        ->get() ;
+        
+        // jika data response nya kosong, langsung masuk ke halaman kuesioner
+        $id_kuesioner = myencrypt(Ms_kuesioner::first()['kuesioner_id'],"Pasientsafetyculture@2022");
+
+        if(count($data_responses) == 0){
+            return redirect('user-kuesioner/isi/'.$id_kuesioner);
+        }
+
         $pass = [];
 
         $data = [];
@@ -53,28 +64,22 @@ class UserKuesionerController extends Controller
                 $pertanyaan = Ms_pertanyaan::where('pertanyaan_id', $dt_dkuesioner['pertanyaan_id'])->first();
                 foreach ($kelompok as $k) {
                     
-                    if($k['kelompok_pertanyaan_deskripsi'] != 'Pribadi'){
-                        if($pertanyaan['kelompok_pertanyaan_id'] == $k['kelompok_pertanyaan_id']){
-                            
-                            $skor[$pertanyaan['kelompok_pertanyaan_id']]+=$j['drespon_jawaban'];
-                            $total_skor+=$j['drespon_jawaban'];
-                            $jumlah_pertanyaan++;
-                            break;
-                        }
+                    if($pertanyaan['kelompok_pertanyaan_id'] == $k['kelompok_pertanyaan_id']){
+                        $skor[$pertanyaan['kelompok_pertanyaan_id']]+=$j['drespon_jawaban'];
+                        $total_skor+=$j['drespon_jawaban'];
+                        $jumlah_pertanyaan++;
+                        break;
                     }
                 }                
             }
             $skor_mean = [];
 
             foreach ($skor as $key=>$s) {
-                // key 1 adalah kelompok pribadi, kita tidak butuh itu
-                if($key!=1){
-                    $jumlah = count(Ms_pertanyaan::where('kelompok_pertanyaan_id', $key)->get());
-                    if($jumlah != 0){
-                        array_push($skor_mean, $this->getMean($s, $jumlah));
-                    }else{
-                        array_push($skor_mean, -1);
-                    }
+                $jumlah = count(Ms_pertanyaan::where('kelompok_pertanyaan_id', $key)->get());
+                if($jumlah != 0){
+                    array_push($skor_mean, $this->getMean($s, $jumlah));
+                }else{
+                    array_push($skor_mean, -1);
                 }
             }
             
@@ -90,18 +95,16 @@ class UserKuesionerController extends Controller
         }
         $pass['data'] = $data;
 
-        // get data post test, apakah sudah menyelesaikan atau belum
-        $last_post = Tr_respon_post::where('user_id', mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
-        ->orderBy('respon_post_datetime', 'desc')
+        // get tr_edukasi terakhir
+        $tr_edukasi = Tr_edukasi::where('user_id', mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
+        ->orderBy('datetime_update', 'desc')
         ->first();
 
-        if($data != null){
-            if($data[count($data)-1]['respon']['respon_datetime'] < $last_post['respon_post_datetime']){
-                $pass['post_test'] = $last_post;
-            }else{
-                $pass['post_test'] = null;
-            }
+        $available = false;
+        if($tr_edukasi['tr_edu_isPdf'] == 1 && $tr_edukasi['tr_edu_isVideo'] == 1){
+            $available = true;
         }
+
         // Tab ke 2
         
         // get data kuesioner
@@ -124,12 +127,14 @@ class UserKuesionerController extends Controller
                 'kuesioner_modified_by' => $data_kuesioner['kuesioner_modified_by'],
                 'kuesioner_created_date' => $data_kuesioner['kuesioner_created_date'],
                 'kuesioner_modified_date' => $data_kuesioner['kuesioner_modified_date'],                
+                'kuesioner_available' => $available,
             ];
             array_push($kuesioners, $format);
         }
         $pass['data2'] = $kuesioners;
 
         $pass['skor'] = Ms_skor::get();
+        $pass['kelompok'] = $kelompok;
         return view('user_kuesioner_history', $pass);
     }
 
@@ -209,7 +214,7 @@ class UserKuesionerController extends Controller
                 'respon_id' => $tr_respon['id'],
                 // 'respon_id' => 1133,
                 'dkuesioner_id' => Dt_dkuesioner::where('pertanyaan_id', $p['pertanyaan_id'])->first()['dkuesioner_id'],
-                'drespon_jawaban' => $request['poin:'. $p['pertanyaan_id']],
+                'drespon_jawaban' => $request['p'. $p['pertanyaan_id']],
                 'drespon_keterangan' => $request['ket:'.$p['pertanyaan_id']] ? $request['ket:'.$p['pertanyaan_id']] : '-'
             ];
             $in = Dt_drespon::create($drespon);
@@ -251,7 +256,7 @@ class UserKuesionerController extends Controller
             ];
             Tr_edukasi::create($tr_edukasi);
         }
-        return redirect('user-kuesioner');
+        return redirect('user-dashboard');
     }
 
     function detailKuesioner($id){

@@ -1,9 +1,9 @@
-	<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="{{ url('/Dashboard') }}">
+	<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar" >
+      <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="{{ url('/user-dashboard') }}">
         <div class="sidebar-brand-icon">
-          <img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}">
+          {{-- <img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}"> --}}
         </div>
-        <div class="sidebar-brand-text mx-3">PSC</div>
+        <div class="sidebar-brand-text mx-3">PSC – SAQ-Indo </div>
       </a>
       <hr class="sidebar-divider my-0">
 	  <li class="nav-item">
@@ -32,12 +32,6 @@
         <a class="nav-link" href="{{ url('/user-kuesioner') }}">
           <i class="fa fa-history" aria-hidden="true"></i>
           <span>Questionnaire History</span>
-        </a>
-      </li>
-      <li class="nav-item <?php echo Request::segment(1) == 'user-post-test' ? 'active' : '' ?>">
-        <a class="nav-link" href="{{ url('/user-post-test') }}">
-          <i class="fa fa-tasks" aria-hidden="true"></i>
-          <span>Post Test History</span>
         </a>
       </li>
       <hr class="sidebar-divider">

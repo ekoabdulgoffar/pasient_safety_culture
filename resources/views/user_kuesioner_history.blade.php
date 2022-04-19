@@ -42,12 +42,9 @@
           <thead>
           <th>No</th>
           <th>Filling time</th>
-          <th>x̄ Kerja Tim</th>
-          <th>x̄ Safety</th>
-          <th>x̄ Kepuasan Kerja</th>
-          <th>x̄ Pengakuan Kondisi Stress</th>
-          <th>x̄ Persepsi Manajemen</th>
-          <th>x̄ Kondisi Kerja</th>
+          @foreach ($kelompok as $k)
+              <th>x̄ {{$k['kelompok_pertanyaan_deskripsi']}}</th>
+          @endforeach
           <th>x̄ Total Skor</th>
           </thead>
           <tbody>
@@ -60,7 +57,6 @@
                 <td>{{number_format($item,2,",","")}}</td>
                 @endif
               @endforeach
-              
               <td>{{number_format($d['mean_total_skor'],2,",","")}}</td>
             </tr>
             @endforeach
@@ -78,29 +74,30 @@
           <th>Action</th>
           </thead>
           <tbody>
-          <?php
-            foreach ($data2 as $key=>$d) {
-          ?>
+          @foreach ($data2 as $key=>$d)
           <tr>
             <td class="align-middle">{{$key+1}}.</td>
             <td class="align-middle">{{$d['kuesioner_deskripsi']}}</td>
             <td class="align-middle">{{ date("d/m/Y", strtotime($d['kuesioner_created_date']));}}</td>
             <td class="align-middle">
-              @if ($data != null && $data[count($data)-1]['mean_total_skor'] <  $skor[0]['skor_max'] && ($post_test['respon_post_status'] == 0 || $post_test == null))
+              @if ($data != null && $data[count($data)-1]['mean_total_skor'] <  $skor[0]['skor_max'] && $d['kuesioner_available'] == false)
               <p>
-                You cannot fill out this questionnaire 
-                
+                You cannot fill out this questionnaire
                 <span class="fa fa-info-circle" data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer"></span>
               </p>
               @else
+              @if ($data != null && $data[count($data)-1]['mean_total_skor'] > $skor[0]['skor_max'])
+              <p>You have completed this questionnaire <span class="fa fa-graduation-cap"></span></p>
+              @else
               <a href="user-kuesioner/isi/{{myencrypt($d['kuesioner_id'],"Pasientsafetyculture@2022")}}" class="btn btn-primary" title="Beri response saya">
-                Fill Now &nbsp;
+                Fiasdll Now &nbsp;
                 <i class="fa fa-check" aria-hidden="true"></i>
               </a>
               @endif
+              @endif
             </td>
           </tr>
-          <?php } ?>
+          @endforeach
           </tbody>
         </table>
       </div>

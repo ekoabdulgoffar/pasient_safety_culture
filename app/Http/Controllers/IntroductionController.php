@@ -16,8 +16,7 @@ class IntroductionController extends Controller
 			return abort(404);
 		}
 		
-		$data_file = Ms_file_edukasi::where('edu_category', 'Pretest')
-		->first();
+		$data_file = Ms_file_edukasi::first();
 		
 		$title_video = "";
 		$link_video = "";
