@@ -20,13 +20,22 @@ function changeIcon(id){
   }
 }
 
+function checkCheckbox(){
+  const comp = document.getElementById('cmengerti');
+  if(comp.checked == true){
+    document.getElementById('n-button-accor_-1').click();
+  }else{
+    alert('You must agree to the terms first by check the checkbox')
+  }
+}
+
 function checkForm(id){
   // console.log(id)
   // return
   let allAreFilled = true;
   document.getElementById(id).querySelectorAll("[required]").forEach(function(i) {
     if (!allAreFilled) return;
-    if (i.type === "radio") {
+    if (i.type === "radio" || i.type === "checkbox") {
       let radioValueCheck = false;
   document.getElementById(id).querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
         if (r.checked) radioValueCheck = true;

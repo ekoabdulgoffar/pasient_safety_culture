@@ -20,7 +20,9 @@ use App\Http\Controllers\UserPostController;
 |
 */
 
-Route::get('/', function () {
+Route::resource('/', 'LandingController');
+
+Route::get('/login', function () {
     return view('login');
 });
 
