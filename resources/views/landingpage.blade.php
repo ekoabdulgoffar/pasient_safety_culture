@@ -24,8 +24,8 @@
       {{-- MAVNAR --}}
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#" style="font-weight: 300; font-size: 16px">
-          <img src="https://seeklogo.com/images/P/pdgi-logo-FDDED04156-seeklogo.com.png" alt="" width="30" height="24">
-          Patient Safety Culture
+          <!--<img src="https://seeklogo.com/images/P/pdgi-logo-FDDED04156-seeklogo.com.png" alt="" width="30" height="24">-->
+          PSC-SAQ-Indo
         </a>
         <a href="{{ url('/login') }}" style="text-decoration: none;" class="btn btn-outline-primary">
           <span class="fa fa-home"></span>
@@ -54,7 +54,7 @@
             <p class="font-weight-bold">Jumlah responden kami : {{$responden}} responden</p>
           </div>
           <div class="col-md-6">
-            <a href="{{ url('/login') }}" style="text-decoration: none;"><span class="fa fa-sign"></span> Jadilah bagian dari kami</a>
+            <a href="{{ url('/login') }}" style="text-decoration: none; float: right;"><span class="fa fa-sign"></span> Jadilah bagian dari kami</a>
           </div>
         </div>
         <hr>
@@ -83,11 +83,15 @@
         @endforeach
       </div>
     </div>
-    <div class="fixed-bottom">
-      <div class="text-center border border-top">
-        <span>Copyright &copy; <script> document.write(new Date().getFullYear()); </script> - Information System for Pasient Safety Culture </span>
-      </div>
-    </div>
+	<br><br><br><br>
+    
   </div>
+		<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+			  <div class="copyright text-center my-auto">
+				<span>Copyright &copy; <script> document.write(new Date().getFullYear()); </script> - Information System for Patient Safety Culture </span>
+			  </div>
+			</div>
+		  </footer>
 </body>
 </html>

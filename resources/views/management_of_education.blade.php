@@ -169,8 +169,8 @@
 						  <select name="edu_category" id="edu_category" 
 							class="form-control" style="width:100%;" required>
 								<option value="">--Select One--</option>
-								<option value="Pretest">Pretest</option>
-								<option value="Posttest">Posttest</option>
+								<option value="Introduction">Introduction</option>
+								<option value="Evaluation">Evaluation</option>
 							</select>
 						</div>
 					   </div>
@@ -225,8 +225,8 @@
 						  <select name="edu_category_update" id="edu_category_update" 
 							class="form-control" style="width:100%;" required>
 								<option value="">--Select One--</option>
-								<option value="Pretest">Pretest</option>
-								<option value="Posttest">Posttest</option>
+								<option value="Introduction">Introduction</option>
+								<option value="Evaluation">Evaluation</option>
 							</select>
 						</div>
 					   </div>

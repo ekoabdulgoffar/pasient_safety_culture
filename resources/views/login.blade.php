@@ -50,7 +50,7 @@
                     <h1 class="h4 text-gray-900 mb-4"><b>Login</b>
 					<br><br/>
 					<span>
-						<b>Information System for Pasient Safety Culture</b>
+						<b>Patient Safety Culture for Dental Healthcare Workers Information System (SAQ-Indo)</b>
 					</span>
 					<br/><br/>
 					<!--<img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}" alt="logo-drrc" style="width: 100px; height: auto;">-->

@@ -335,17 +335,6 @@ class UserController extends Controller
 				['user_id', '=', $get_user_id]
 			])->get();
 		
-		/*$result = 0;
-		$crud_result = '';
-		$crud_message = '';
-		if ($result > 0) {
-			$crud_result = 1;
-			$crud_message = 'Data has been updated.';
-		}  else {$crud_message = 'Failed to update data.';}
-		
-		$data['crud_result'] = "";
-		$data['crud_message'] = "";*/
-		
 		$get_data_provinsi = $this->getProvinsi();
 		$data_provinsi = array();
 		foreach ($get_data_provinsi['ID'] as $row) {
@@ -386,7 +375,15 @@ class UserController extends Controller
 					'user_pendidikan_terakhir' => $request->input("user_pendidikan_terakhir_update"),
 					'user_provinsi' => $request->input("user_provinsi_update"),
 					'user_cabang_keanggotaan' => $request->input("user_cabang_keanggotaan_update"),
-					'user_wilayah_keanggotaan' => $request->input("user_wilayah_keanggotaan_update")
+					'user_wilayah_keanggotaan' => $request->input("user_wilayah_keanggotaan_update"),
+					'user_p1' => $request->input("user_p1_update"),
+					'user_p2' => $request->input("user_p2_update"),
+					'user_p3' => $request->input("user_p3_update"),
+					'user_p4' => $request->input("user_p4_update"),
+					'user_p5' => $request->input("user_p5_update"),
+					'user_p6' => $request->input("user_p6_update"),
+					'user_p7' => $request->input("user_p7_update"),
+					'user_p8' => $request->input("user_p8_update")
 				);
 				$result = Users::where([
 					['user_id', '=', $request->input('id_update')]

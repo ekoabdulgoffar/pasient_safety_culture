@@ -1,7 +1,7 @@
 		<footer class="sticky-footer bg-white">
 			<div class="container my-auto">
 			  <div class="copyright text-center my-auto">
-				<span>Copyright &copy; <script> document.write(new Date().getFullYear()); </script> - Information System for Pasient Safety Culture </span>
+				<span>Copyright &copy; <script> document.write(new Date().getFullYear()); </script> - Information System for Patient Safety Culture </span>
 			  </div>
 			</div>
 		  </footer>

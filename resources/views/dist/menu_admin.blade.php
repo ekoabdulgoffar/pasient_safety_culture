@@ -1,9 +1,9 @@
 	<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a class="sidebar-brand d-flex align-items-center justify-content-center bg-gradient-primary" href="{{ url('/Dashboard') }}">
         <div class="sidebar-brand-icon">
-          <img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}">
+          <!--<img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}">-->
         </div>
-        <div class="sidebar-brand-text mx-3">PSC</div>
+        <div class="sidebar-brand-text mx-3">SAQ-Indo</div>
       </a>
       <hr class="sidebar-divider my-0">
 	  <li class="nav-item">

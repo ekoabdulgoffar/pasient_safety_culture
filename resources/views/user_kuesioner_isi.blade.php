@@ -220,7 +220,7 @@ PSC 2022 | Isi Kuesioner
       @if ($myaccordian_id != "accor_0")
       <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#{{$backaccordian_id}}" aria-expanded="true" aria-controls="collapseOne">Back</button>
       @endif
-      <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#accor_-1" aria-expanded="true" aria-controls="collapseOne">Back</button>
+      <!--<button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#accor_-1" aria-expanded="true" aria-controls="collapseOne">Back</button>-->
       <button id="c-button-{{$myaccordian_id}}" type="button" onclick="checkForm('{{$myaccordian_id}}')" class="btn btn-primary">Next</button>
       <button style="display: none" id="n-button-{{$myaccordian_id}}" type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#{{$nextaccordian_id}}" aria-expanded="true" aria-controls="collapseOne">N</button>
       @endif

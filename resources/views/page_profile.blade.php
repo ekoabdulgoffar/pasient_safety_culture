@@ -61,12 +61,15 @@
 				<div class="col-lg-12">
 				  <div class="card mb-4">
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-					  <h6 class="m-0 font-weight-bold text-primary">Edit Profile</h6>
+					  <h6 class="m-0 font-weight-bold text-primary"></h6>
 					</div>
 					<div class="table-responsive p-3">
 						<form role="form" action="{{ url('/page_profile/update') }}" method="post">
 							{{ csrf_field() }}
 							<?php foreach ($data_user_byID as $row) { ?>
+							
+								<h4><u>Personal</u></h4>
+							<br>
 							<div class="form-group">
 							  <label for="user_username_update">Username</label>
 							  <input type="text" class="form-control" id="user_username_update" name="user_username_update" placeholder="" required readonly value="<?= $row->user_username ?>">
@@ -160,8 +163,119 @@
 							  <input type="text" class="form-control" id="user_wilayah_keanggotaan_update" name="user_wilayah_keanggotaan_update"
 							  placeholder=""  value="<?= $row->user_wilayah_keanggotaan ?>">
 							</div>
+							
+							<br>
+								<h4><u>Profile Detail</u></h4>
 							<br>
 							
+							<div class="form-group">
+							  <label for="user_p1_update">Tempat bekerja atau praktik</label>
+							  <select name="user_p1_update" id="user_p1_update" 
+								class="form-control" style="width:100%;" required>
+									<option value="">--Select One--</option>
+									<option value="Fasilitas Kesehatan Primer" <?= $row->user_p1 == 'Fasilitas Kesehatan Primer' ? 'selected' : '' ?>>
+										Fasilitas Kesehatan Primer
+									</option>
+									<option value="Fasilitas Kesehatan Sekunder" <?= $row->user_p1 == 'Fasilitas Kesehatan Sekunder' ? 'selected' : '' ?>>
+										Fasilitas Kesehatan Sekunder
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+							  <label for="user_p2_update">Saya berpraktik di (Puskesmas/Klinik/Rumah Sakit Umum/Rumah Sakit Swasta/Dsb.)</label>
+							  <select name="user_p2_update" id="user_p2_update" 
+								class="form-control" style="width:100%;" required>
+									<option value="">--Select One--</option>
+									<option value="Praktik Pribadi" <?= $row->user_p2 == 'Praktik Pribadi' ? 'selected' : '' ?>>
+										Praktik Pribadi
+									</option>
+									<option value="Klinik Swasta/Bersama" <?= $row->user_p2 == 'Klinik Swasta/Bersama' ? 'selected' : '' ?>>
+										Klinik Swasta/Bersama
+									</option>
+									<option value="Klinik Pratama" <?= $row->user_p2 == 'Klinik Pratama' ? 'selected' : '' ?>>
+										Klinik Pratama
+									</option>
+									<option value="Puskesmas" <?= $row->user_p2 == 'Puskesmas' ? 'selected' : '' ?>>
+										Puskesmas
+									</option>
+									<option value="Rumah Sakit Pemerintah" <?= $row->user_p2 == 'Rumah Sakit Pemerintah' ? 'selected' : '' ?>>
+										Rumah Sakit Pemerintah
+									</option>
+									<option value="Rumah Sakit Swasta" <?= $row->user_p2 == 'Rumah Sakit Swasta' ? 'selected' : '' ?>>
+										Rumah Sakit Swasta
+									</option>
+									<option value="Rumah Sakit Khusus lain (Mata,Ibu Anak,Jiwa,dll)" <?= $row->user_p2 == 'Rumah Sakit Khusus lain (Mata,Ibu Anak,Jiwa,dll)' ? 'selected' : '' ?>>
+										Rumah Sakit Khusus lain (Mata,Ibu Anak,Jiwa,dll)
+									</option>
+									<option value="Rumah Sakit Khusus Gigi & Mulut" <?= $row->user_p2 == 'Rumah Sakit Khusus Gigi & Mulut' ? 'selected' : '' ?>>
+										Rumah Sakit Khusus Gigi & Mulut
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+							  <label for="user_p3_update">Area tempat praktik</label>
+							  <select name="user_p3_update" id="user_p3_update" 
+								class="form-control" style="width:100%;" required>
+									<option value="">--Select One--</option>
+									<option value="Perkotaan" <?= $row->user_p3 == 'Perkotaan' ? 'selected' : '' ?>>
+										Perkotaan
+									</option>
+									<option value="Rural Area" <?= $row->user_p3 == 'Rural Area' ? 'selected' : '' ?>>
+										Rural Area (Bukan Perkotaan)
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+							  <label for="user_p4_update">Jumlah pasien yang saya kerjakan per hari</label>
+							  <input type="text" class="form-control" id="user_p4_update" name="user_p4_update"
+							  placeholder="" value="<?= $row->user_p4 ?>">
+							</div>
+							<div class="form-group">
+							  <label for="user_p5_update">Hingga saat ini telah berpraktik selama</label>
+							  <input type="text" class="form-control" id="user_p5_update" name="user_p5_update"
+							  placeholder="" value="<?= $row->user_p5 ?>">
+							</div>
+							<div class="form-group">
+							  <label for="user_p6_update">Dalam 5 (lima) tahun terakhir pernahkah anda mengikuti pelatihan/seminar tentang keselamatan pasien ?</label>
+							  <select name="user_p6_update" id="user_p6_update" 
+								class="form-control" style="width:100%;" required>
+									<option value="">--Select One--</option>
+									<option value="Pernah" <?= $row->user_p6 == 'Pernah' ? 'selected' : '' ?>>
+										Pernah
+									</option>
+									<option value="Tidak Pernah" <?= $row->user_p6 == 'Tidak Pernah' ? 'selected' : '' ?>>
+										Tidak Pernah
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+							  <label for="user_p7_update">Anda memiliki STR yang masih berlaku</label>
+							  <select name="user_p7_update" id="user_p7_update" 
+								class="form-control" style="width:100%;" required>
+									<option value="">--Select One--</option>
+									<option value="Ya" <?= $row->user_p7 == 'Ya' ? 'selected' : '' ?>>
+										Ya
+									</option>
+									<option value="Tidak" <?= $row->user_p7 == 'Tidak' ? 'selected' : '' ?>>
+										Tidak
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+							  <label for="user_p8_update">Anda memiliki SIP yang masih berlaku</label>
+							  <select name="user_p8_update" id="user_p8_update" 
+								class="form-control" style="width:100%;" required>
+									<option value="">--Select One--</option>
+									<option value="Ya" <?= $row->user_p8 == 'Ya' ? 'selected' : '' ?>>
+										Ya
+									</option>
+									<option value="Tidak" <?= $row->user_p8 == 'Tidak' ? 'selected' : '' ?>>
+										Tidak
+									</option>
+								</select>
+							</div>
+							
+							<br>
 							<button type="submit" class="btn btn-primary">Edit</button>
 							
 							<?php } ?>

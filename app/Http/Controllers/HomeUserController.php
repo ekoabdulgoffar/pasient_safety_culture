@@ -60,12 +60,14 @@ class HomeUserController extends Controller
             
             $dt_dkuesioner = Dt_dkuesioner::where('dkuesioner_id',$j['dkuesioner_id'])->first();
             $pertanyaan = Ms_pertanyaan::where('pertanyaan_id', $dt_dkuesioner['pertanyaan_id'])->first();
+			$kelompok_pertanyaan_count = 0;
             foreach ($kelompok as $k) {
                 if($pertanyaan['kelompok_pertanyaan_id'] == $k['kelompok_pertanyaan_id']){
                     
-                    $skor[$pertanyaan['kelompok_pertanyaan_id']]+=$j['drespon_jawaban'];
+                    $skor[$kelompok_pertanyaan_count]+=$j['drespon_jawaban'];
                     $total_skor+=$j['drespon_jawaban'];
                     $jumlah_pertanyaan++;
+					$kelompok_pertanyaan_count++;
                     break;
                 }                
             }                
