@@ -70,6 +70,7 @@ Route::get('/user-kuesioner/detail/{id}', [UserKuesionerController::class, 'deta
 Route::get('/user-kuesioner/edit/{id}', [UserKuesionerController::class, 'editKuesioner']);
     
 Route::post('/isi-kuesioner', [UserKuesionerController::class, 'submitKuesioner']);
+Route::get('/result-kuesioner', [UserKuesionerController::class, 'result']);
 
 // END ISI KUESIONER
 
@@ -89,4 +90,4 @@ Route::resource('/user-post-test', 'UserPostController');
 Route::get('/post-test-result/{id}', [UserPostController::class, 'showResult']);
 
 // TESTIN GROUTE
-Route::view('/tes', 'user_post_test_result');
+Route::view('/tes', 'user_kuesioner_ending');

@@ -62,14 +62,13 @@ class UserKuesionerController extends Controller
                 
                 $dt_dkuesioner = Dt_dkuesioner::where('dkuesioner_id',$j['dkuesioner_id'])->first();
                 $pertanyaan = Ms_pertanyaan::where('pertanyaan_id', $dt_dkuesioner['pertanyaan_id'])->first();
-				$kelompok_pertanyaan_count = 0;
+				
                 foreach ($kelompok as $k) {
                     
                     if($pertanyaan['kelompok_pertanyaan_id'] == $k['kelompok_pertanyaan_id']){
-                        $skor[$kelompok_pertanyaan_count]+=$j['drespon_jawaban'];
+                        $skor[$pertanyaan['kelompok_pertanyaan_id']]+=$j['drespon_jawaban'];
                         $total_skor+=$j['drespon_jawaban'];
                         $jumlah_pertanyaan++;
-						$kelompok_pertanyaan_count++;
                         break;
                     }
                 }                
@@ -154,6 +153,27 @@ class UserKuesionerController extends Controller
         $kues = Ms_kuesioner::where('kuesioner_id', $id)->first();
         if($kues == null){
             return redirect('user-kuesioner');
+        }
+
+        // validasi pengisian kuesioner sudah lolos
+        $lastRespon = Tr_respon::where('user_id',mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
+        ->orderBy('respon_datetime','desc')
+        ->first() ;
+        if($lastRespon != null){
+            $total_skor = 0;
+            $jumlah_pertanyaan = 0;
+             
+            $kuesioner = $this->getKuesionerByResponId($lastRespon['respon_id']);
+            $jawaban = Dt_drespon::where('respon_id', $lastRespon['respon_id'])->get();
+            
+            foreach ($jawaban as $key => $j) {
+                $total_skor+=$j['drespon_jawaban'];
+                $jumlah_pertanyaan++;             
+            }
+            $skor = Ms_skor::where('skor_id',1)->first();
+            if($this->getMean($total_skor,$jumlah_pertanyaan) >= $skor['skor_max']){
+                return redirect('result-kuesioner');
+            }
         }
         
         $pertanyaan = $this->getListPertanyaanByKuesionerId($id);
@@ -258,7 +278,10 @@ class UserKuesionerController extends Controller
             ];
             Tr_edukasi::create($tr_edukasi);
         }
-        return redirect('user-dashboard');
+        return redirect('result-kuesioner');
+    }
+    function result(){
+        return view('user_kuesioner_ending');
     }
 
     function detailKuesioner($id){

@@ -60,14 +60,11 @@ class HomeUserController extends Controller
             
             $dt_dkuesioner = Dt_dkuesioner::where('dkuesioner_id',$j['dkuesioner_id'])->first();
             $pertanyaan = Ms_pertanyaan::where('pertanyaan_id', $dt_dkuesioner['pertanyaan_id'])->first();
-			$kelompok_pertanyaan_count = 0;
             foreach ($kelompok as $k) {
                 if($pertanyaan['kelompok_pertanyaan_id'] == $k['kelompok_pertanyaan_id']){
-                    
-                    $skor[$kelompok_pertanyaan_count]+=$j['drespon_jawaban'];
+                    $skor[$pertanyaan['kelompok_pertanyaan_id']]+=$j['drespon_jawaban'];
                     $total_skor+=$j['drespon_jawaban'];
                     $jumlah_pertanyaan++;
-					$kelompok_pertanyaan_count++;
                     break;
                 }                
             }                
@@ -82,11 +79,10 @@ class HomeUserController extends Controller
                 array_push($skor_mean, -1);
             }            
         }
-
         // get last tr_edukasi
         $tr_edukasi = Tr_edukasi::where('user_id', mydecrypt(session('user_id'), "Pasientsafetyculture@2022"))
         ->orderBy('datetime_update', 'desc')
-        ->first();        
+        ->first();
         
         $format = [
             'kuesioner' => $this->getKuesionerByResponId($data_response['respon_id']),

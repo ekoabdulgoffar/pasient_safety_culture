@@ -85,11 +85,15 @@ PSC 2022 | Isi Kuesioner
         </tr>
         @foreach ($daftarIstilahArray as $key=>$item)
             <tr>
-              <td>{{$key+1}}. {{$item[0]}}</td>
-              <td>: {{$item[1]}}</td>
+              <td>{{$key+1}}.</td>
+              <td class="font-weight-bold"> {{$item[0]}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>{{$item[1]}}</td>
             </tr>
         @endforeach        
-      </table>
+      </table>      
       <br>
       @php
           $daftarPustakaArray = array(
@@ -110,19 +114,17 @@ PSC 2022 | Isi Kuesioner
             "Singer SJ, Tucker AL. Creating a Culture of Safety in Hospitals.; 2014. https://www.researchgate.net/publication/237229005_Creating_a_Culture_of_Safety_in_Hospitals.",
             "KBBI-Daring. Kepuasan. https://kbbi.kemdikbud.go.id/entri/kep. Published 2021.",
           );
-      @endphp
-      <table>
-        <tr>
-          <td colspan="2"><b>Daftar Pustaka</b></td>
-        </tr>
+          @endphp
+      <b>Daftar Pustaka</b>
+      <br>
+      <ol class="pl-3">
         @foreach ($daftarPustakaArray as $key=>$item)
-            <tr>
-              <td class="align-top">{{$key+1}}.&nbsp;&nbsp;&nbsp;</td>
-              <td valign="top" >{{$item}}</td>
-            </tr>
+        <li>
+         {{$item}}
+        </li>
         @endforeach
-      </table>
-      </p>
+      </ol>
+    </p>
       <br>
       <div class="card card-body border border-secondary mb-3">
         <div class="form-check">
@@ -165,7 +167,7 @@ PSC 2022 | Isi Kuesioner
         </div>
       </div>
       <br>
-      <table class="table">
+      <table class="table" style="display: flex;flex-wrap: no-wrap; overflow-x: auto;">
         <tr>
           <td colspan="2">Pertanyaan</td>
           {{-- <td class="text-center">Jawaban</td> --}}
