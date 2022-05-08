@@ -16,7 +16,7 @@ class EdukasiController extends Controller
 			return abort(404);
 		}
 		
-		$data['ms_file_edukasi'] = Ms_file_edukasi::All();
+		$data['ms_file_edukasi'] = Ms_file_edukasi::orderBy('edu_category', 'DESC')->get();
 		return view('management_of_education',$data);
 	}
 
@@ -51,7 +51,7 @@ class EdukasiController extends Controller
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
 		
-		$data['ms_file_edukasi'] = Ms_file_edukasi::All();
+		$data['ms_file_edukasi'] = Ms_file_edukasi::orderBy('edu_category', 'DESC')->get();
 		return view('management_of_education',$data);
 	}
 	
@@ -88,7 +88,7 @@ class EdukasiController extends Controller
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
 		
-		$data['ms_file_edukasi'] = Ms_file_edukasi::All();
+		$data['ms_file_edukasi'] = Ms_file_edukasi::orderBy('edu_category', 'DESC')->get();
 		return view('management_of_education',$data);
 	}
 	
@@ -107,7 +107,7 @@ class EdukasiController extends Controller
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message;
 		
-		$data['ms_file_edukasi'] = Ms_file_edukasi::All();
+		$data['ms_file_edukasi'] = Ms_file_edukasi::orderBy('edu_category', 'DESC')->get();
 		return view('management_of_education',$data);
     }
 	

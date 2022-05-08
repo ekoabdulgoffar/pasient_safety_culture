@@ -3,7 +3,7 @@
         <div class="sidebar-brand-icon">
           <!--<img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}">-->
         </div>
-        <div class="sidebar-brand-text mx-3">SAQ-Indo</div>
+        <div class="sidebar-brand-text mx-3">PSC-SAQ-Indo</div>
       </a>
       <hr class="sidebar-divider my-0">
 	  <li class="nav-item">

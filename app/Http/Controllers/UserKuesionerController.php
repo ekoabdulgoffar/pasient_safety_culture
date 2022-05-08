@@ -199,6 +199,30 @@ class UserKuesionerController extends Controller
         $pass['jenis_pertanyaan'] = $jenis_pertanyaan;
         $pass['kuesioner'] = $kuesioner;
         $pass['kelompok_pertanyaan'] = $kelompok_pertanyaan;
+		
+		
+		$data_file1 = Ms_file_edukasi::where([
+					['edu_desk_video', '=', 'Opening']
+				])->orderBy('edu_id', 'DESC')->first(); // video opening
+		$data_file2 = Ms_file_edukasi::where([
+					['edu_desk_video', '=', 'Edukasi 1']
+				])->orderBy('edu_id', 'DESC')->first(); // video edukasi 1
+		
+		$title_video1 = "";
+		$link_video1 = "";
+		$title_video2 = "";
+		$link_video2 = "";
+		
+		$title_video1 = $data_file1['edu_desk_video'];
+		$link_video1 = $data_file1['edu_file_video'];
+		$title_video2 = $data_file2['edu_desk_video'];
+		$link_video2 = $data_file2['edu_file_video'];
+		
+		$pass['title_video1'] = $title_video1;
+		$pass['link_video1'] = $link_video1;
+		$pass['title_video2'] = $title_video2;
+		$pass['link_video2'] = $link_video2;
+		
         return view('user_kuesioner_isi', $pass);
     }
 

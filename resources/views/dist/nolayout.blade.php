@@ -13,6 +13,16 @@
       @show
     </title>
     @include('dist.css')
+	<style>
+		@media only screen and (max-width: 600px) {
+		  #iframe_video1 {
+			  height: auto;
+		  }
+		  #iframe_video2 {
+			  height: auto;
+		  }
+		}
+	</style>
   </head>
 
   <body id="page-top">

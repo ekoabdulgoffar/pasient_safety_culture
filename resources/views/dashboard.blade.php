@@ -27,7 +27,7 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Change Password' ?></h1>
               <ol class="breadcrumb">
-                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Pasient Safety Culture</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Patient Safety Culture</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Change Password' ?></li>
               </ol>
             </div>
@@ -50,7 +50,14 @@
               <?php echo $crud_message ?>
             </div>
             <?php }} ?>
-
+			
+			<div class="row">
+				<div class="col-sm-12" style="">
+					<center>
+					<img src="{{ asset('assets/image/img_cover_dashboard.jpeg') }}" alt="" width="80%" height="auto" >
+					</center>
+				</div>
+			</div>
             <!-- End Content Body -->
           </div>
           <!---Container Fluid-->

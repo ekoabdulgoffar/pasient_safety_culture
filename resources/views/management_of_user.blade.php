@@ -29,7 +29,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Management of Users</h1>
             <ol class="breadcrumb">
-			  <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Pasient Safety Culture</a></li>
+			  <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Patient Safety Culture</a></li>
               <li class="breadcrumb-item active" aria-current="page">Management of Users</li>
             </ol>
           </div>

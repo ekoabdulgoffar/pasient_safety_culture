@@ -62,19 +62,27 @@
         <br>
         @foreach ($kuesioner as $key=>$item)      
         <div class="card card-body border-left-success">
-          <h5 class="font-weight-bold">{{$item['kuesioner_deskripsi']}}</h5>          
-          <table class="table table-borderless">
-            <tr>
-              <td>Jumlah data survey saat ini</td>
-              <td>: </td>
-              <td class="float-right">{{$respon[$key]}}</td>
-            </tr>
-            <tr>
-              <td>Jumlah pertanyaan</td>
-              <td>: </td>
-              <td class="float-right">{{$pertanyaan[$key]}}</td>
-            </tr>
-          </table>          
+          <h5 class="font-weight-bold">{{$item['kuesioner_deskripsi']}}</h5>    
+			<div class="row">
+				<div class="col-sm-4">
+					<img src="{{ asset('assets/image/img_kuesioner_01.jpeg') }}" alt="" width="100%" height="auto">
+				</div>
+				<div class="col-sm-8">
+					<table class="table table-borderless">
+					<tr>
+					  <td>Jumlah data survey saat ini</td>
+					  <td>: </td>
+					  <td class="float-right">{{$respon[$key]}}</td>
+					</tr>
+					<tr>
+					  <td>Jumlah pertanyaan</td>
+					  <td>: </td>
+					  <td class="float-right">{{$pertanyaan[$key]}}</td>
+					</tr>
+				  </table> 
+				</div>
+			</div>
+			           
           <hr class="my-3">
           <div class="d-flex">
             <a href="{{ url('user-kuesioner/isi/'.myencrypt($item['kuesioner_id'],"Pasientsafetyculture@2022")); }}" class="btn btn-success"><span class="fa fa-list"></span> Mulai survey</a>

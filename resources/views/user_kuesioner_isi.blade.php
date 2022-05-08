@@ -135,10 +135,53 @@ PSC 2022 | Isi Kuesioner
         </div>
       </div>
       <button id="c-button-accor_-1" type="button" onclick="checkCheckbox()" class="btn btn-primary">Next</button>
-      <button style="display: none" id="n-button-accor_-1" type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#accor_0" aria-expanded="true" aria-controls="collapseOne">N</button>
+      <button style="display: none" id="n-button-accor_-1" type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#accor_-2" aria-expanded="true" aria-controls="collapseOne">N</button>
       <br>
     </div>
   </div>
+  
+  <div id="accor_-2" class="card mb-3 collapse hide" data-parent="#accordion">
+    <div class="card-header p-1 bg-primary"></div>
+    <div class="card-body" style="font-family: Arial, Helvetica, sans-serif">
+      <p class="h5">Video sebelum mengisi survei</p>
+      <hr>
+      {{-- <p class="mb-0"></p> --}}
+      
+		<ul class="nav nav-tabs">
+		  <li class="nav-item">
+		  <a class="nav-link active" data-toggle="tab" href="#video_opening">Opening</a>
+		  </li>
+		  <li class="nav-item">
+		  <a class="nav-link" data-toggle="tab" href="#video_edukasi1">Edukasi 1</a>
+		  </li>
+		</ul>
+
+		<div class="tab-content">
+		  <div id="video_opening" class="tab-pane in active">
+			<!-- <h3><?= $title_video1 ?></h3>-->
+			<div class="row">
+				<div class="col-sm-12">
+					<iframe id="iframe_video1" src="<?= $link_video1 ?>" width="100%" height="550px" class="iframe" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</div>
+			</div>
+		  </div>
+		  <div id="video_edukasi1" class="tab-pane fade">
+			<!-- <h3><?= $title_video2 ?></h3>-->
+			<div class="row">
+				<div class="col-sm-12">
+					<iframe id="iframe_video2" src="<?= $link_video2 ?>" width="100%" height="550px" class="iframe" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</div>
+			</div>
+		  </div>
+		</div>
+	  
+      <br>
+      <button id="back-button-accor_-1" type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#accor_-1" aria-expanded="true" aria-controls="collapseOne">Back</button>
+      <button id="n-button-accor_-1" type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#accor_0" aria-expanded="true" aria-controls="collapseOne">Next</button>
+      <br>
+    </div>
+  </div>
+  
   @foreach ($pertanyaan as $i => $p)
   {{-- MODEL 2 --}}
     @foreach ($kelompok_pertanyaan as $index => $k)
@@ -215,6 +258,9 @@ PSC 2022 | Isi Kuesioner
         <tr style="height: 15px;"></tr>
         @endforeach
       </table>
+	  @if ($myaccordian_id == "accor_0")
+      <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#accor_-2" aria-expanded="true" aria-controls="collapseOne">Back</button>
+      @endif
       @if ($i+1 == count($pertanyaan))      
       <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#{{$backaccordian_id}}" aria-expanded="true" aria-controls="collapseOne">Back</button>
       <input type="submit" value="Finish" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this answer?')" />

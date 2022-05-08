@@ -49,6 +49,8 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4"><b>Login</b>
 					<br><br/>
+					<img src="{{ asset('assets/image/img_logo_login.jpeg') }}" alt="" width="200px" height="100px">
+					<br/><br/>
 					<span>
 						<b>Patient Safety Culture for Dental Healthcare Workers Information System (SAQ-Indo)</b>
 					</span>
