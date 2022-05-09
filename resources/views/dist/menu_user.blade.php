@@ -36,5 +36,5 @@
       </li>
       <hr class="sidebar-divider">
       
-      <div class="version">Version 2.0</div>
+      <div class="version">Version 1.0</div>
     </ul>

@@ -181,7 +181,10 @@ PSC 2022 | Isi Kuesioner
       <br>
     </div>
   </div>
-  <?php $pilihan_jwb_identity = 1;  ?>
+  <?php 
+	$pilihan_jwb_identity = 1;  
+	$no_pertanyaan = 1;
+  ?>
   @foreach ($pertanyaan as $i => $p)
   {{-- MODEL 2 --}}
     @foreach ($kelompok_pertanyaan as $index => $k)
@@ -225,7 +228,7 @@ PSC 2022 | Isi Kuesioner
         </tr>
         @foreach ($p as $key=>$pertanyaan_satuan)
         <tr style="background-color: whitesmoke;" class="text-dark">
-          <td class="align-top p-2 font-weight-bold">{{$key+1}}.</td>
+          <td class="align-top p-2 font-weight-bold">{{$no_pertanyaan}}.</td>
           <td class="w-100 p-2">
             <p class="mb-1 font-weight-bold">{{$pertanyaan_satuan['pertanyaan_']}} <span class="text-danger">*</span></p>
             <br />
@@ -257,6 +260,7 @@ PSC 2022 | Isi Kuesioner
           @endforeach
         </tr>
         <tr style="height: 15px;"></tr>
+		<?php $no_pertanyaan++;  ?>
         @endforeach
       </table>
 	  @if ($myaccordian_id == "accor_0")
