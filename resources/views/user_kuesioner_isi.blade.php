@@ -181,7 +181,7 @@ PSC 2022 | Isi Kuesioner
       <br>
     </div>
   </div>
-  
+  <?php $pilihan_jwb_identity = 1;  ?>
   @foreach ($pertanyaan as $i => $p)
   {{-- MODEL 2 --}}
     @foreach ($kelompok_pertanyaan as $index => $k)
@@ -241,7 +241,7 @@ PSC 2022 | Isi Kuesioner
                         <div class="form-check">
                           <input class="form-check-input" type="radio" 
                           name="p{{$pertanyaan_satuan['pertanyaan_id']}}" 
-                          id="i{{$pertanyaan_satuan['pertanyaan_id']}}"
+                          id="i_{{$pertanyaan_satuan['pertanyaan_id']}}_{{$pilihan_jwb_identity}}"
                           @if ($prm['poin'] != -1)
                           value="{{$prm['nilai']}}" 
                           @else
@@ -250,6 +250,7 @@ PSC 2022 | Isi Kuesioner
                           required/>
                         </div>
                       </td>
+					  <?php $pilihan_jwb_identity++;  ?>
                       @endforeach
                   @endif
               @endif
