@@ -417,4 +417,49 @@ class UserController extends Controller
 		$data['data_user_byID'] = $data_user_byID;
 		return view('page_profile',$data);
     }
+	
+	public function user_distribution()
+	{
+		if (!session()->has('user_id')) {
+			return redirect('login');
+		} else if (session()->has('user_role') == true && session('user_role') != "Admin" ) {
+			return abort(404);
+		}
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data_user_detail = Users::select('user_id', 'user_provinsi',\DB::raw("COUNT(user_id) as user_total"))
+			->groupBy('user_provinsi')->get();
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = $data_user_detail;
+		return view('distribution_of_user',$data);
+	}
+	
+	public function user_distribution_detail($id)
+	{
+		if (!session()->has('user_id')) {
+			return redirect('login');
+		} else if (session()->has('user_role') == true && session('user_role') != "Admin" ) {
+			return abort(404);
+		}
+		
+		$user_provinsi = mydecrypt($id,'Pasientsafetyculture@2022');
+		
+		$data_provinsi = $user_provinsi;
+		
+		$data_user_detail = Users::where([
+				['user_provinsi', '=', $user_provinsi]
+			])->get();
+		
+		$data['data_provinsi'] = $data_provinsi;
+		$data['ms_user'] = $data_user_detail;
+		
+		return view('distribution_of_user_detail',$data);
+	}
 }

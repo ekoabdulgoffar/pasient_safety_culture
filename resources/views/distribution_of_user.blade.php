@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon">
-  <title>{{env('APP_NAME')}} | Users</title>
+  <title>{{env('APP_NAME')}} | Users DIstribution</title>
   @include('dist.css')
 </head>
 
@@ -27,17 +27,14 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Kelola Pengguna</h1>
+            <h1 class="h3 mb-0 text-gray-800">Distribusi Data Pengguna</h1>
             <ol class="breadcrumb">
 			  <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">{{env('APP_NAME')}}</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Kelola Pengguna</li>
+              <li class="breadcrumb-item active" aria-current="page">Distribusi Data Pengguna</li>
             </ol>
           </div>
 		  <!-- Content Body -->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-						<i class="fa fa-plus"></i> Tambah
-			</button>
-			<br/><br/>
+			
 			<?php if (isset($crud_result)) {
 				if ($crud_result == 1) { ?>
 			<div class="alert alert-success alert-dismissible" role="alert">
@@ -68,73 +65,34 @@
 				  <table class="table align-items-center table-flush table-hover nowrap" id="dataTableHover">
                     <thead class="thead-light">
 					<tr>
-					  <th>No.</th>
-					  <th>Username</th>
-					  <th>Role</th>
-					  <th>Nama</th>
-					  <th>Email</th>
-					  <th>No. Handphone</th>
-					  <th>Provinsi</th>
-					  <th>Status</th>
-					  <th>Aksi</th>
+					  <th class="text-center">No.</th>
+					  <th class="text-center">Provinsi</th>
+					  <th class="text-center">Jumlah</th>
+					  <th class="text-center">Aksi</th>
 					</tr>
 					</thead>
 					<tbody>
 					<?php $i=0; ?>
 					<?php foreach ($ms_user as $ou){?>
-										<tr>
-											<td>
-												<?php $i++; ?>
-												<?php echo $i ?>
-											</td>
-											<td>
-												<?php echo $ou->user_username ?>
-											</td>
-											<td>
-												<?php echo $ou->user_role ?>
-											</td>
-											<td>
-												<?php echo $ou->user_name ?>
-											</td>
-											<td>
-												<?php echo $ou->user_email ?>
-											</td>
-											<td>
-												<?php echo $ou->user_phone ?>
-											</td>
-											<td>
-												<?php echo $ou->user_provinsi?>
-											</td>
-											<td>
-												<?php 
-													if ($ou->user_status == 0) echo "Non Active"; 
-													else echo "Active"; 
-												?>
-											</td>
-											<td>
-												<a href="#" onclick="preview_edit('<?php echo $ou->user_id ?>','<?php echo $ou->user_username ?>','<?php echo $ou->user_name ?>','<?php echo $ou->user_tanggal_lahir ?>','<?php echo $ou->user_jenis_kelamin ?>','<?php echo $ou->user_alamat ?>','<?php echo $ou->user_email ?>','<?php echo $ou->user_phone ?>','<?php echo $ou->user_role ?>','<?php echo $ou->user_pendidikan_terakhir ?>','<?php echo $ou->user_provinsi ?>','<?php echo $ou->user_npa ?>','<?php echo $ou->user_cabang_keanggotaan ?>','<?php echo $ou->user_wilayah_keanggotaan ?>')" 
-													data-toggle="modal" data-target="#modal-edit">
-													<i class="fa fa-edit" title="Update"></i>
-												</a> 
-												| 
-												<?php if ($ou->user_status == 0) { ?>
-													<a href="#" onclick="preview_update_status('<?php echo $ou->user_id ?>','1')" 
-													data-toggle="modal" data-target="#modal-default-edit-status">
-														<i class="fa fa-toggle-off" title="Set Not Active"></i>		
-													</a>
-												<?php } else { ?>
-													<a href="#" onclick="preview_update_status('<?php echo $ou->user_id ?>','0')" 
-													data-toggle="modal" data-target="#modal-default-edit-status">
-														<i class="fa fa-toggle-on" title="Set Active"></i>	
-													</a>
-												<?php } ?>
-												|
-												<a href="#" onclick="preview_reset_password('<?php echo $ou->user_id ?>')" 
-													data-toggle="modal" data-target="#modal-reset-password">
-													<i class="fa fa-key" title="Reset Passowrd"></i>
-												</a> 
-											</td>
-										</tr>
+						@if ($ou->user_provinsi != '-')
+						<tr>
+							<td class="text-center">
+								<?php $i++; ?>
+								<?php echo $i ?>
+							</td>
+							<td>
+								<?php echo $ou->user_provinsi ?>
+							</td>
+							<td class="text-right">
+								<?php echo $ou->user_total ?>
+							</td>
+							<td class="text-center">	
+								<a href="{{ url('/distribution_of_user/detail/'.myencrypt($ou->user_provinsi,'Pasientsafetyculture@2022')) }}">
+									<i class="fa fa-bars" title="Periode"></i>
+								</a> 
+							</td>
+						</tr>
+						@endif
 					<?php } ?>
 					</tbody>
 				  </table>

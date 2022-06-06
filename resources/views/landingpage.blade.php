@@ -25,7 +25,7 @@
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#" style="font-weight: 300; font-size: 16px">
           <!--<img src="https://seeklogo.com/images/P/pdgi-logo-FDDED04156-seeklogo.com.png" alt="" width="30" height="24">-->
-          PSC-SAQ-Indo
+          {{env('APP_NAME')}}
         </a>
         <a href="{{ url('/login') }}" style="text-decoration: none;" class="btn btn-outline-primary">
           <span class="fa fa-home"></span>
@@ -97,7 +97,7 @@
 		<footer class="sticky-footer bg-white">
 			<div class="container my-auto">
 			  <div class="copyright text-center my-auto">
-				<span>Copyright &copy; <script> document.write(new Date().getFullYear()); </script> - Information System for Patient Safety Culture </span>
+				<span>Copyright &copy; <script> document.write(new Date().getFullYear()); </script> - {{env('APP_NAME')}} </span>
 			  </div>
 			</div>
 		  </footer>

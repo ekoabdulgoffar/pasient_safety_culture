@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon" />
-    <title>PSC | Dashboard</title>
+    <title>{{env('APP_NAME')}} | Dashboard</title>
     @include('dist.css')
   </head>
 
@@ -25,10 +25,10 @@
           <!-- Container Fluid-->
           <div class="container-fluid" id="container-wrapper">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Change Password' ?></h1>
+              <h1 class="h3 mb-0 text-gray-800"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Ubah Kata Sandi' ?></h1>
               <ol class="breadcrumb">
-                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Patient Safety Culture</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Change Password' ?></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">{{env('APP_NAME')}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo Request::segment(1) == 'Dashboard' ? 'Dashboard' : 'Ubah Kata Sandi' ?></li>
               </ol>
             </div>
             <!-- Content Body -->

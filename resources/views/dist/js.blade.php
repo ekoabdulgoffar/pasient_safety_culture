@@ -25,7 +25,7 @@
 			  fixedColumns: true,
 			  dom: 'Bfrtip',
 			  buttons: [
-					'copy', 'csv', 'excel', 'pdf', 'print'
+					'excel'
 			  ]
 		  }); // ID From dataTable with Hover
 		  

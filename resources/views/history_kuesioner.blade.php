@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon">
-  <title>PSC | History Questionnaire</title>
+  <title>{{env('APP_NAME')}} | Histori Data</title>
   @include('dist.css')
 </head>
 
@@ -27,10 +27,10 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">History Questionnaire</h1>
+            <h1 class="h3 mb-0 text-gray-800">Histori Data</h1>
             <ol class="breadcrumb">
-			  <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Patient Safety Culture</a></li>
-              <li class="breadcrumb-item active" aria-current="page">History Questionnaire</li>
+			  <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">{{env('APP_NAME')}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Histori Data</li>
             </ol>
           </div>
 		  <!-- Content Body -->
@@ -59,7 +59,7 @@
 				<div class="col-lg-12">
 				  <div class="card mb-4">
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-					  <h6 class="m-0 font-weight-bold text-primary">Respondent Data</h6>
+					  <h6 class="m-0 font-weight-bold text-primary">Data Responden</h6>
 					  <!-- <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-legend">
 						Legend
 					  </button> -->

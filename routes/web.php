@@ -47,6 +47,8 @@ Route::post('/management_of_user/user_insert', [UserController::class, 'insert_u
 Route::post('/management_of_user/user_update', [UserController::class, 'update_user']);
 Route::post('/management_of_user/user_update_status', [UserController::class, 'updateStatus']);
 Route::post('/management_of_user/reset_password', [UserController::class, 'resetPassword']);
+Route::get('/distribution_of_user', [UserController::class, 'user_distribution']);
+Route::get('/distribution_of_user/detail/{id}', [UserController::class, 'user_distribution_detail']);
 //-- End User
 
 //-- Start file edukasi

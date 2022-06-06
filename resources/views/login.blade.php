@@ -52,7 +52,7 @@
 					<img src="{{ asset('assets/image/img_logo_login.jpeg') }}" alt="" width="200px" height="100px">
 					<br/><br/>
 					<span>
-						<b>Patient Safety Culture for Dental Healthcare Workers Information System (SAQ-Indo)</b>
+						<b>Patient Safety Culture for Dental Healthcare Workers Information System <br>({{env('APP_NAME')}})</b>
 					</span>
 					<br/><br/>
 					<!--<img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}" alt="logo-drrc" style="width: 100px; height: auto;">-->

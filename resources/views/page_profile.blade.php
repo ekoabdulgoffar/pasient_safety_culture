@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon" />
-    <title>PSC | Profile</title>
+    <title>{{env('APP_NAME')}} | Profil</title>
     @include('dist.css')
   </head>
 
@@ -29,10 +29,10 @@
           <!-- Container Fluid-->
           <div class="container-fluid" id="container-wrapper">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">Profile</h1>
+              <h1 class="h3 mb-0 text-gray-800">Profil</h1>
               <ol class="breadcrumb">
-                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Pasient Safety Culture</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">{{env('APP_NAME')}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Profil</li>
               </ol>
             </div>
             <!-- Content Body -->
@@ -76,34 +76,34 @@
 							  <input type="hidden" class="form-control" id="id_update" name="id_update" value="<?= $row->user_id ?>">
 							</div>
 							<div class="form-group">
-							  <label for="user_name_update">Name</label>
+							  <label for="user_name_update">Nama</label>
 							  <input type="text" class="form-control" id="user_name_update" name="user_name_update" placeholder="" required value="<?= $row->user_name ?>">
 							</div>
 							<div class="form-group">
-							  <label for="user_tanggal_lahir_update">Date of Born (Optional)</label>
+							  <label for="user_tanggal_lahir_update">Tanggal Lahir (Optional)</label>
 							  <input type="date" class="form-control" id="user_tanggal_lahir_update" name="user_tanggal_lahir_update" placeholder="" value="<?= $row->user_tanggal_lahir ?>">
 							</div>
 							<div class="form-group">
-								<label for="user_gender_update">Gender</label>
+								<label for="user_gender_update">Jenis Kelamin</label>
 								<table>
 									<tr>
 										<td>
 											<div class="custom-control custom-radio custom-control-inline">
 											  <input type="radio" class="custom-control-input" id="user_male_update" name="user_jenis_kelamin_update" value="1" <?= $row->user_jenis_kelamin == 1 ? 'checked' : '' ?> >
-											  <label class="custom-control-label" for="user_male_update">Male</label>
+											  <label class="custom-control-label" for="user_male_update">Laki-laki</label>
 											</div>
 										</td>
 										<td>
 											<div class="custom-control custom-radio custom-control-inline">
 											  <input type="radio" class="custom-control-input" id="user_female_update" name="user_jenis_kelamin_update" value="0" <?= $row->user_jenis_kelamin == 0 ? 'checked' : '' ?> >
-											  <label class="custom-control-label" for="user_female_update">Female</label>
+											  <label class="custom-control-label" for="user_female_update">Perempuan</label>
 											</div>
 										</td>
 									</tr>
 								</table>
 							</div>
 							<div class="form-group">
-								<label for="user_alamat_update">Address (Optional)</label>
+								<label for="user_alamat_update">Alamat (Optional)</label>
 								<textarea class="form-control" id="user_alamat_update" name="user_alamat_update" cols="40" rows="5"><?= $row->user_alamat ?></textarea>
 							</div>
 							<div class="form-group">
@@ -111,7 +111,7 @@
 							  <input type="email" class="form-control" id="user_email_update" name="user_email_update" placeholder="Enter Email" required value="<?= $row->user_email ?>">
 							</div>
 							<div class="form-group">
-							  <label for="user_phone_update">Phone</label>
+							  <label for="user_phone_update">No. Handphone</label>
 							  <input type="text" class="form-control" id="user_phone_update" name="user_phone_update" maxlength="13"
 							  placeholder="Enter Phone" onkeypress="return hanyaAngka(event)" required value="<?= $row->user_phone ?>">
 							</div>
@@ -125,7 +125,7 @@
 								</select>
 							</div>
 							<div class="form-group">
-							  <label for="user_pendidikan_terakhir_update">Last Education</label>
+							  <label for="user_pendidikan_terakhir_update">Pendidikan Terakhir</label>
 							  <select name="user_pendidikan_terakhir_update" id="user_pendidikan_terakhir_update" 
 								class="form-control" style="width:100%;" required>
 									<option value="">--Select One--</option>
@@ -139,7 +139,7 @@
 								</select>
 							</div>
 							<div class="form-group">
-							  <label for="user_provinsi_update">Province</label>
+							  <label for="user_provinsi_update">Provinsi</label>
 							  <select name="user_provinsi_update" id="user_provinsi_update" 
 								class="form-control" style="width:100%;" required>
 									<option value="">--Select One--</option>
@@ -165,7 +165,7 @@
 							</div>
 							
 							<br>
-								<h4><u>Profile Detail</u></h4>
+								<h4><u>Detail Profil</u></h4>
 							<br>
 							
 							<div class="form-group">
