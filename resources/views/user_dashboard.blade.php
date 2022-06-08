@@ -10,10 +10,10 @@
 
 @section('content-header-info')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h5 mb-0 text-gray-800">Dashboard Home</h1>
+  <h1 class="h5 mb-0 text-gray-800">Home</h1>
   <ol class="breadcrumb">
-    <li class="breadcrumb-item" aria-current="page"><a href="user-dashboard">Pasient Safety Culture</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Home PSC</li>
+    <li class="breadcrumb-item" aria-current="page"><a href="user-dashboard">{{env('APP_NAME')}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
   </ol>
 </div>
 @endsection 
@@ -61,41 +61,50 @@
   @endif  
 @endif
 
+
+<div class="card">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-12 mb-md"> 
+				<p class="text-justify">
+					{!! $notes_skor !!}
+				</p>
+			 </div>   
+		</div>
+	</div>
+ </div>
+<br>
 <div class="card">
   <div class="card-body">
-    <div class="card-title h4 font-weight-bold"><u>Your last activity</u></div>
+    <div class="card-title h4 font-weight-bold"><u>Aktivitas Terakhir Anda</u></div>
     <div class="row">
       <div class="col-md-6 mb-3 mb-md-0">
-          <p class="font-weight-bold">Completed Questionnaire</p>
+          <p class="font-weight-bold">Survei telah selesai dilakukan</p>
           <table class="table table-borderless">
             <tr>
-              <td>Questionnaire name</td>
+              <td>Nama Survei</td>
               <td>: {{$data['kuesioner']['kuesioner_deskripsi']}}</td>
             </tr>
             <tr>
-              <td>Filling time</td>
+              <td>Waktu Pengisian</td>
               <td>: {{$data['respon']['respon_datetime']}}</td>
             </tr>
             <tr>
-              <td>Total score</td>
+              <td>Total Skor</td>
               <td>: {{$data['total_skor']}}</td>
             </tr>
             <tr>
-              <td>Average total score</td>
+              <td>Rata-rata Skor</td>
               <td>: {{number_format($data['mean_total_skor'],2,",","")}}</td>
             </tr>
             <tr>
-              <td>Questionnaire result status</td>
-              @if ($data['mean_total_skor'] >= $skor[0]['skor_max'])
-              <td>: <span class="badge px-2 py-2 bg-success rounded text-light">Success</span></td>
-              @else
-              <td>: <span class="badge px-2 py-2 bg-danger rounded text-light">Failed</span></td>
-              @endif
+              <td>Status</td>
+			  {!! $result_skor !!}
             </tr>
           </table>
         </div>
         <div class="col-md-6 mb-md">         
-          <p class="font-weight-bold">Average result details</p>
+          <p class="font-weight-bold">Detail</p>
           <table class="table table-borderless">
           @foreach ($kelompok as $key=>$item)
           <tr>

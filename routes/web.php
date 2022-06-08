@@ -62,6 +62,7 @@ Route::post('/management_of_education/education_delete', [EdukasiController::cla
 // USER
 Route::resource('/user-dashboard', 'HomeUserController');
 Route::resource('/user-introduction','IntroductionController');
+Route::get('/user-dashboard-video' ,[HomeUserController::class, 'home_video']);
 // USER KUESIONER
 
 Route::get('/user-kuesioner', [UserKuesionerController::class, 'index']);

@@ -12,7 +12,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h5 mb-0 text-gray-800">Questionnaire History</h1>
   <ol class="breadcrumb">
-	<li class="breadcrumb-item" aria-current="page"><a href="Dashboard">Pasient Safety Culture</a></li>
+	<li class="breadcrumb-item" aria-current="page"><a href="Dashboard">{{env('APP_NAME')}}</a></li>
     <li class="breadcrumb-item active" aria-current="page">Questionnaire History</li>
     {{-- <li class="breadcrumb-item active" aria-current="page">Questionnaire History</li> --}}
   </ol>
