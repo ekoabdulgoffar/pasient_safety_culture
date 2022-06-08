@@ -9,7 +9,7 @@
 	  <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-change-password">
           <i class="fas fa-fw fa-key"></i>
-          <span>Ubah Password</span></a>
+          <span>Ubah Kata Sandi</span></a>
       </li>
       <li class="nav-item <?php echo Request::segment(1) == 'user-dashboard' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-dashboard') }}">
