@@ -25,6 +25,7 @@
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#" style="font-weight: 300; font-size: 16px">
           <!--<img src="https://seeklogo.com/images/P/pdgi-logo-FDDED04156-seeklogo.com.png" alt="" width="30" height="24">-->
+		  <img src="{{ asset('assets/image/logo-safe_dental.jpeg') }}" alt="" width="50px" height="50px">
           {{env('APP_NAME')}}
         </a>
         <a href="{{ url('/login') }}" style="text-decoration: none;" class="btn btn-outline-primary">

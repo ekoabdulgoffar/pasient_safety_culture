@@ -47,12 +47,11 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4"><b>Login</b>
-					<br><br/>
-					<img src="{{ asset('assets/image/img_logo_login.jpeg') }}" alt="" width="200px" height="100px">
+                    <h1 class="h4 text-gray-900 mb-4"><b></b>
+					<img src="{{ asset('assets/image/logo-safe_dental.jpeg') }}" alt="" width="200px" height="200px">
 					<br/><br/>
 					<span>
-						<b>Patient Safety Culture for Dental Healthcare Workers Information System <br>({{env('APP_NAME')}})</b>
+						<b>Patient Safety Culture for Dental Healthcare Workers Information System</b>
 					</span>
 					<br/><br/>
 					<!--<img src="{{ asset('assets-ruang-admin/img/pdgi.png') }}" alt="logo-drrc" style="width: 100px; height: auto;">-->
