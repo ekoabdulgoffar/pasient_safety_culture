@@ -7,7 +7,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <link href="{{ asset('assets/image/logo-safe_dental.jpeg') }}" rel="icon" />
-  <title>Patient Safety Culture</title>
+  <title>{{env('APP_NAME')}}</title>
   @include('dist.css')
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

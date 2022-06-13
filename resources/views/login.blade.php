@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon">
-  <title>PSC | Login</title>
+  <link href="{{ asset('assets/image/logo-safe_dental.jpeg') }}" rel="icon" />
+  <title>{{env('APP_NAME')}} | Login</title>
   <link href="{{ asset('assets-ruang-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets-ruang-admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets-ruang-admin/css/ruang-admin.min.css') }}" rel="stylesheet">
