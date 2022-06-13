@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link href="https://seeklogo.com/images/P/pdgi-logo-FDDED04156-seeklogo.com.png" rel="icon" />
+  <link href="{{ asset('assets/image/logo-safe_dental.jpeg') }}" rel="icon" />
   <title>Patient Safety Culture</title>
   @include('dist.css')
   <link rel="preconnect" href="https://fonts.googleapis.com">

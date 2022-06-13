@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="{{ asset('assets-ruang-admin/img/pdgi.png') }}" rel="icon">
+  <link href="{{ asset('assets/image/logo-safe_dental.jpeg') }}" rel="icon" />
   <title>{{env('APP_NAME')}} | Histori Data</title>
   @include('dist.css')
 </head>

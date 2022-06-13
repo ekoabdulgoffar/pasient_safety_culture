@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     {{-- <link href="{{ asset('assets-ruang-admin/img/logo/logo-edurisk.PNG') }}" rel="icon" /> --}}
-    <link href="https://seeklogo.com/images/P/pdgi-logo-FDDED04156-seeklogo.com.png" rel="icon" />
+    <link href="{{ asset('assets/image/logo-safe_dental.jpeg') }}" rel="icon" />
     <title>
       @section('title')
       @show
