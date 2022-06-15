@@ -31,15 +31,15 @@ PSC 2022 | Isi Kuesioner
       <hr>
       {{-- <p class="mb-0">Happy filling</p> --}}
       <p class="text-justify">
-        Kepada Yth :
-      <br><br>
-      Sejawat dokter gigi di Indonesia 
+      Yth Sejawat tenaga kesehatan di bidang Kedokteran Gigi  di Indonesia.
       <br>
       Asswrwb,
       <br><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;Perlu diketahui bahwa keselamatan (safety) telah menjadi isu yang mendunia khususnya pada  layanan kesehatan. Data  kejadian tidak diharapkan (KTD atau Adverse Event ) di berbagai negara di dunia seperti Amerika,Colorado,Utah,New York, Inggris, Denmark, Asia dan Australia, menjadi cikal bakal berbagai negara segera mengembangkan Sistem Keselamatan Pasien.<sup>1</sup> Apalagi saat ini dunia sedang dihadapkan pada Pandemi Global dengan adanya virus Covid 19, dimana data WHO menunjukkan bahwa virus ini sudah banyak menelan korban , bahkan pada dokter maupun tenaga medis yang merupakan profesi yang berisiko tinggi.<sup>2</sup> Per 14 April 2022  kasus virus Covid-19 telah menginfeksi lebih dari 200 negara di dunia dengan update data adalah 500.186.525   kasus dengan  6.190.349 wafat  termasuk di Indonesia  ada 6.037.742  kasus dengan 155.794 orang wafat dengan jumlah yang telah divaksin di seluruh dunia adalah  11.294.502.059.<sup>3</sup>
+	  Sejawat Yth, Terima kasih  telah berkenan berkunjung pada laman <b>SafeDental.ID</b> perihal Budaya Keselamatan Pasien pada Layanan Kedokteran Gigi di Indonesia.  Berikut akan disampaikan gambaran tentang pentingnya Budaya Keselamatan Pasien khususnya pada bidang Kedokteran Gigi. 
+	  <br><br>
+      Perlu diketahui bahwa keselamatan (<i>safety</i>) telah menjadi isu yang mendunia khususnya pada  layanan kesehatan. Data  kejadian tidak diharapkan (KTD atau Adverse Event ) di berbagai negara di dunia seperti Amerika,Colorado,Utah,New York, Inggris, Denmark, Asia dan Australia, menjadi cikal bakal berbagai negara segera mengembangkan Sistem Keselamatan Pasien.<sup>1</sup> Apalagi saat ini dunia sedang dihadapkan pada Pandemi Global dengan adanya virus Covid 19, dimana data WHO menunjukkan bahwa virus ini sudah banyak menelan korban , bahkan pada dokter maupun tenaga medis yang merupakan profesi yang berisiko tinggi.<sup>2</sup> Per 14 April 2022  kasus virus Covid-19 telah menginfeksi lebih dari 200 negara di dunia dengan update data adalah 500.186.525   kasus dengan  6.190.349 wafat  termasuk di Indonesia  ada 6.037.742  kasus dengan 155.794 orang wafat dengan jumlah yang telah divaksin di seluruh dunia adalah  11.294.502.059.<sup>3</sup>
       <br><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;Pada bidang kedokteran gigi , dokter gigi berisiko tinggi terhadap infeksi silang dan dapat menjadi orang pertama yang kontak karena dekat dengan pasien yang berpotensi menjadi sumber penularan.<sup>4</sup> Kondisi ini membuat semua pihak   melakukan tindakan kewaspadaan standar khususnya penerapan 𝘜𝘯𝘪𝘷𝘦𝘳𝘴𝘢𝘭 𝘗𝘳𝘦𝘤𝘢𝘶𝘵𝘪𝘰𝘯 dari WHO termasuk dalam menghadapi virus Covid-19 ini <sup>5</sup>, Hal ini membuka wawasan dunia tentang pentingnya faktor budaya keselamatan pasien khususnya bagi tenaga medis.<sup>2</sup> Terkait dengan upaya-upaya Keselamatan Pasien di faskes primer dan sekunder, diyakini bahwa upaya tersebut akan menciptakan budaya keselamatan/𝘴𝘢f𝘦𝘵𝘺 𝘤𝘶𝘭𝘵𝘶𝘳𝘦  serta  merupakan langkah pertama dalam tahapan mencapai Keselamatan Pasien yang berkaitan dengan manajemen risiko dan keselamatan<sup>6</sup> termasuk di bidang layanan kedokteran gigi.
+      &nbsp;&nbsp;&nbsp;&nbsp;Pada bidang kedokteran gigi , dokter gigi berisiko tinggi terhadap infeksi silang dan dapat menjadi orang pertama yang kontak karena dekat dengan pasien yang berpotensi menjadi sumber penularan.<sup>4</sup> Kondisi ini membuat semua pihak   melakukan tindakan kewaspadaan standar khususnya penerapan <i>Universal Precaution</i> dari WHO termasuk dalam menghadapi virus Covid-19 ini <sup>5</sup>, Hal ini membuka wawasan dunia tentang pentingnya faktor budaya keselamatan pasien khususnya bagi tenaga medis.<sup>2</sup> Terkait dengan upaya-upaya Keselamatan Pasien di faskes primer dan sekunder, diyakini bahwa upaya tersebut akan menciptakan budaya keselamatan/<i>safety culture</i>  serta  merupakan langkah pertama dalam tahapan mencapai Keselamatan Pasien yang berkaitan dengan manajemen risiko dan keselamatan<sup>6</sup> termasuk di bidang layanan kedokteran gigi.
       <br><br>
       &nbsp;&nbsp;&nbsp;&nbsp;Dengan meningkatnya budaya keselamatan pasien di fasilitas layanan kesehatan   diharapkan kepercayaan masyarakat terhadap layanan kesehatan  termasuk kesehatan gigi dan mulut dapat meningkat, sehingga dapat meningkatkan angka kunjungan pasien ke fasilitas kesehatan gilut. Telah dilakukan penelitian tentang analisis gambaran budaya keselamatan pasien terhadap dokter gigi  pada faskes primer (klinik gigi, puskesmas, klinik pratama)  dan sekunder (RS/RSGM) di Indonesia. 
       <br><br>
@@ -55,7 +55,7 @@ PSC 2022 | Isi Kuesioner
       <br><br>
       Demikian, Semoga berkenan dan terima kasih atas partisipasinya dalam mengisi kuesioner.
       <br><br>
-      drg. Mita Juliawati,MARS
+      drg. Mita Juliawati,MARS dan tim SafeDental.ID
       <br>
       Mahasiswa Program S3 - Fakultas Kedokteran Gigi Universitas Indonesia 
       <br>
@@ -63,9 +63,9 @@ PSC 2022 | Isi Kuesioner
       <br>
       Email : <a href="mailto:penelitian.psc.mita2020@gmail.com">penelitian.psc.mita2020@gmail.com</a>
       <br><br>
-      <b>Catatan : Definisi yang berhubungan dengan keselamatan pasien </b>
+      <b><i>Catatan : Definisi yang berhubungan dengan keselamatan pasien</i></b>
       <br><br>
-      <b>Keselamatan Pasien</b> adalah segala jenis upaya untuk menghindari / mencegah pasien dari cedera atau kejadian tidak diharapkan lainnya selama proses perawatan. terkait dengan asuhan pasien, insiden yang dapat dicegah atau yang seharusnya tidak terjadi, dan sudah dikategorikan sebagai suatu disiplin<sup>13</sup> serta suatu sistem dimana fasilitas kesehatan dalam hal ini klinik atau rumah sakit membuat asuhan pasien lebih aman.<sup>14</sup>
+      <i><b>Keselamatan Pasien</b> adalah segala jenis upaya untuk menghindari / mencegah pasien dari cedera atau kejadian tidak diharapkan lainnya selama proses perawatan.</i> terkait dengan asuhan pasien, insiden yang dapat dicegah atau yang seharusnya tidak terjadi, dan sudah dikategorikan sebagai suatu disiplin<sup>13</sup> serta suatu sistem dimana fasilitas kesehatan dalam hal ini klinik atau rumah sakit membuat asuhan pasien lebih aman.<sup>14</sup>
       <br><br>
       <b>Budaya Keselamatan Pasien</b> adalah  nilai-nilai yang dibagikan kepada seluruh anggota di dalam sebuah organisasi tentang hal yang dianggap penting, keyakinan mereka tentang bagaimana hal-hal terjadi di sebuah organisasi, serta interaksi dari hal-hal tersebut dengan unit kerja,struktur serta sistem organisasi yang mengutamakan  keselamatan pasien.<sup>15</sup>
       <br>
@@ -97,21 +97,21 @@ PSC 2022 | Isi Kuesioner
       <br>
       @php
           $daftarPustakaArray = array(
-            "Kohn LT, Corrigan JM, Donaldson MS. To Err Is Human Building a Safer Health System. Washington,DC: National Academies Press; 2000. doi:10.17226/9728",
-            "Pruc M, Golik D, Szarpak L, Adam I, Smereka J. COVID-19 in healthcare workers. Am J Emerg Med. 2020;158984(April):1. doi:10.1016/j.ajem.2020.05.017",
+            "Kohn LT, Corrigan JM, Donaldson MS. <i>To Err Is Human Building a Safer Health System.</i> Washington,DC: National Academies Press; 2000. doi:10.17226/9728",
+            "Pruc M, Golik D, Szarpak L, Adam I, Smereka J. COVID-19 in healthcare workers. <i>Am J Emerg Med.</i> 2020;158984(April):1. doi:10.1016/j.ajem.2020.05.017",
             "WHO. Overview Data Covid-19 Last updated: 2022/4/14. https://covid19.who.int/. Published 2022.",
-            "Kamate SK, Sharma S, Thakar S, et al. Assessing knowledge, attitudes and practices of dental practitioners regarding the covid-19 pandemic: A multinational study. Dent Med Probl. 2020;57(1):11-17. doi:10.17219/DMP/119743",
-            "WHO. Standard Precautions in Health Care. In: Infection Control. Switzerland: WHO; 2007. doi:10.5005/jp/books/12675_65",
-            "WHO. Better Knowledge for Safer Care: Human Factors in Patient Safety.; 2009. http://www.who.int/patientsafety/research/methods_measures/human_factors/human_factors_review.pdf.",
-            "Sexton JB, Helmreich RL, Neilands TB, et al. The Safety Attitudes Questionnaire: Psychometric properties, benchmarking data, and emerging research. BMC Health Serv Res. 2006;6:1-10. doi:10.1186/1472-6963-6-44",
-            "Gabrani A, Hoxha A, Simaku A GJ. Application of the Safety Attitudes Questionnaire (SAQ) in Albanian hospitals: a cross-sectional study. BMJ Open 2015. 2015;5:1-10. doi:10.1136/bmjopen-2014-006528",
+            "Kamate SK, Sharma S, Thakar S, et al. Assessing knowledge, attitudes and practices of dental practitioners regarding the covid-19 pandemic: A multinational study. <i>Dent Med Probl.</i> 2020;57(1):11-17. doi:10.17219/DMP/119743",
+            "WHO. Standard Precautions in Health Care. In: <i>Infection Control.</i> Switzerland: WHO; 2007. doi:10.5005/jp/books/12675_65",
+            "WHO. <i>Better Knowledge for Safer Care: Human Factors in Patient Safety.</i>; 2009. http://www.who.int/patientsafety/research/methods_measures/human_factors/human_factors_review.pdf.",
+            "Sexton JB, Helmreich RL, Neilands TB, et al. The Safety Attitudes Questionnaire: Psychometric properties, benchmarking data, and emerging research. <i>BMC Health Serv Res.</i> 2006;6:1-10. doi:10.1186/1472-6963-6-44",
+            "Gabrani A, Hoxha A, Simaku A GJ. Application of the Safety Attitudes Questionnaire (SAQ) in Albanian hospitals: a cross-sectional study. <i>BMJ Open 2015.</i> 2015;5:1-10. doi:10.1136/bmjopen-2014-006528",
             "Li Y, Zhao X, Zhang X, et al. Validation study of the safety attitudes questionnaire (SAQ) in public hospitals of Heilongjiang province, China. PLoS One. 2017;12(6):1-11. doi:10.1371/journal.pone.0179486",
             "Cheng H, Yen AM, Lee Y. ScienceDirect Factors affecting patient safety culture among dental healthcare workers : A nationwide cross-sectional survey. J Dent Sci. 2019;14(3):263-268. doi:10.1016/j.jds.2018.12.001",
-            "Juliawati M, Darwita RR, Adiatman M, Lestari F. Patient Safety Culture in Dentistry Analysis Using the Safety Attitude Questionnaire in DKI Jakarta , Indonesia : A Cross-Cultural Adaptation and Validation Study. J Patient Saf. 2022;00(00):1-8.",
-            "Hodgen A, Ellis L, Churruca K, Bierbaum M. Safety Culture Assessment in Health Care: A Review of the Literature on Safety Culture Assessment Modes. Sydney: the Australian Commission on Safety and Quality in Health Care; 2017. https://www.safetyandquality.gov.au/wp-content/uploads/2017/10/Safety-Culture-Assessment-in-Health-Care-A-review-of-the-literature-on-safety-culture-assessment-modes.pdf.",
+            "Juliawati M, Darwita RR, Adiatman M, Lestari F. Patient Safety Culture in Dentistry Analysis Using the Safety Attitude Questionnaire in DKI Jakarta , Indonesia : A Cross-Cultural Adaptation and Validation Study. <i>J Patient Saf.</i> 2022;00(00):1-8.",
+            "Hodgen A, Ellis L, Churruca K, Bierbaum M. <i>Safety Culture Assessment in Health Care: A Review of the Literature on Safety Culture Assessment Modes.</i> Sydney: the Australian Commission on Safety and Quality in Health Care; 2017. https://www.safetyandquality.gov.au/wp-content/uploads/2017/10/Safety-Culture-Assessment-in-Health-Care-A-review-of-the-literature-on-safety-culture-assessment-modes.pdf.",
             "WHO. WHO - Patient Safety. https://www.who.int/teams/integrated-health-services/patient-safety. Published 2021.",
-            "Komite Keselamatan Pasien Rumah Sakit. Pedoman Pelaporan Insiden Keselamatan Pasien (IKP) Patient Safety Incident Report. Kementerian Kesehatan RI; 2015.",
-            "Singer SJ, Tucker AL. Creating a Culture of Safety in Hospitals.; 2014. https://www.researchgate.net/publication/237229005_Creating_a_Culture_of_Safety_in_Hospitals.",
+            "Komite Keselamatan Pasien Rumah Sakit. <i>Pedoman Pelaporan Insiden Keselamatan Pasien (IKP) Patient Safety Incident Report.</i> Kementerian Kesehatan RI; 2015.",
+            "Singer SJ, Tucker AL. <i>Creating a Culture of Safety in Hospitals.</i>; 2014. https://www.researchgate.net/publication/237229005_Creating_a_Culture_of_Safety_in_Hospitals.",
             "KBBI-Daring. Kepuasan. https://kbbi.kemdikbud.go.id/entri/kep. Published 2021.",
           );
           @endphp
@@ -120,7 +120,7 @@ PSC 2022 | Isi Kuesioner
       <ol class="pl-3">
         @foreach ($daftarPustakaArray as $key=>$item)
         <li>
-         {{$item}}
+         {!! $item !!}
         </li>
         @endforeach
       </ol>

@@ -42,11 +42,11 @@
       <div class="card-body">
         <div class="card card-body bg-primary text-light text-center">
           <p>
-            Selamat Datang di <b>Website BUDAYA KESELAMATAN PASIEN pada bidang Kedokteran Gigi di Indonesia</b>
+            Selamat Datang di <b>{{env('APP_NAME')}}</b> Website BUDAYA KESELAMATAN PASIEN pada bidang Kedokteran Gigi di Indonesia
           </p>
           <hr style="border-color: white">
           <p>
-            Welcome to the Website <b>PATIENT SAFETY CULTURE in DENTISTRY in Indonesia</b>
+            Welcome to <b> {{env('APP_NAME')}}</b> the Website PATIENT SAFETY CULTURE in DENTISTRY in Indonesia
           </p>
         </div>
         <br>
