@@ -113,7 +113,7 @@ class HomeUserController extends Controller
 					<br>
 					Pada survei kali ini Nilai Budaya Keselamatan Pasien Sejawat adalah <b>Baik Sekali</b>. Sejawat telah  memiliki Budaya Keselamatan yang Positif serta sudah memperhatikan faktor budaya keselamatan (<b><i>Safety Culture</i></b>)  di tempat praktik, Pertahankan kondisi yang sudah baik ini dan perlu dilakukan evaluasi berkala untuk mempertahankan kondisi ini dengan nilai yang sudah dalam kategori  tinggi , antara lain terhadap  Faktor Iklim tim kerja, Iklim Keselamatan Pasien, Kepuasan Kerja, Stres, Persepsi Manajemen dan Kondisi kerja.
 					<br><br>
-					Silahkan ulang menonton '.$link_video_edukasi1.'  dan lanjut  klik '.$link_video_edukasi2.'  perihal <b>Penerapan Budaya Keselamatan Pasien pada praktik Dokter Gigi</b> untuk mendapatkan  gambaran Budaya Keselamatan (Safety Culture). Setelah itu anda dapat mengisi ulang survei Budaya Keselamatan Pasien dari awal. <b>
+					Silahkan ulang menonton '.$link_video_edukasi1.'  dan lanjut  klik '.$link_video_edukasi2.'  perihal <b>Penerapan Budaya Keselamatan Pasien pada praktik Dokter Gigi</b> untuk mendapatkan  gambaran Budaya Keselamatan (<b><i>Safety Culture</b></i>). Setelah itu anda dapat mengisi ulang survei Budaya Keselamatan Pasien dari awal. <b>
 					<br>
 					Selamat Mencoba,  Semoga Sukses selalu . Terima Kasih.</b>
 				';

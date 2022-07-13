@@ -63,7 +63,7 @@
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
-							<h6><i class="fas fa-check"></i><b> Thank you!</b></h6>
+							<h6><i class="fas fa-check"></i><b> Terima kasih!</b></h6>
 							<?php echo $crud_message ?>
 						  </div>
 						<?php } else if($crud_result == 0) { ?> 
@@ -71,7 +71,7 @@
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
-							<h6><i class="fas fa-ban"></i><b> Failed!</b></h6>
+							<h6><i class="fas fa-ban"></i><b> Gagal!</b></h6>
 							<?php echo $crud_message ?>
 						  </div>
 				  <?php }} ?> 
@@ -93,9 +93,9 @@
                     </div>
                   </form>
                   
-                  <!--<div class="text-center">
-					Don't have an account ? <a href="#" data-toggle="modal" data-target="#modal-default">Register</a>
-                  </div>-->
+                  <div class="text-center">
+					Apakah anda belum memiliki akun ? <a href="#" data-toggle="modal" data-target="#modal-default">Daftar</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,73 +110,108 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-				<h4 class="modal-title">Register</h4>
+				<h4 class="modal-title">Daftar</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body">
-                <!-- form start -->
-					<form role="form" action="#" method="post">
+                 <!-- form start -->
+					<form role="form" action="{{ url('/register') }}" method="post">
 					  <div class="box-body">
 					  {{ csrf_field() }}
 						<div class="form-group">
 						  <label for="user_username">Username</label>
-						  <input type="text" class="form-control" id="user_username" name="user_username" placeholder="Enter username" required>
+						  <input type="text" class="form-control" id="user_username" name="user_username" placeholder="" required>
 						</div>
 						<div class="form-group">
-						  <label for="user_name">Name</label>
-						  <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter name" required>
+						  <label for="user_password">Kata Sandi</label>
+						  <input type="password" class="form-control" id="user_password" name="user_password" placeholder="" required>
 						</div>
 						<div class="form-group">
-						  <label for="user_company">Institution</label>
-						  <input type="text" class="form-control" id="user_company" name="user_company" placeholder="Example: DRRC UI" required>
+						  <label for="user_name">Nama</label>
+						  <input type="text" class="form-control" id="user_name" name="user_name" placeholder="" required>
 						</div>
 						<div class="form-group">
-						  <label for="user_date_of_born">Date of Born (Optional)</label>
-						  <input type="date" class="form-control" id="user_date_of_born" name="user_date_of_born" placeholder="Enter your date of born">
+						  <label for="user_date_of_born">Tanggal Lahir (Optional)</label>
+						  <input type="date" class="form-control" id="user_tanggal_lahir" name="user_tanggal_lahir" placeholder="">
 						</div>
 						<div class="form-group">
-						  <label for="user_place_of_born">Place of Born (Optional)</label>
-						  <input type="text" class="form-control" id="user_place_of_born" name="user_place_of_born" placeholder="Enter your place of born">
-						</div>
-						<div class="form-group">
-							<label for="user_gender">Gender</label>
+							<label for="user_jenis_kelamin">Jenis Kelamin</label>
 							<table>
 								<tr>
 									<td>
 										<div class="custom-control custom-radio custom-control-inline">
-										  <input type="radio" class="custom-control-input" id="user_male" name="user_gender" value="1">
-										  <label class="custom-control-label" for="user_male">Male</label>
+										  <input type="radio" class="custom-control-input" id="user_male" name="user_jenis_kelamin" value="1">
+										  <label class="custom-control-label" for="user_male">Laki-laki</label>
 										</div>
 									</td>
 									<td>
 										<div class="custom-control custom-radio custom-control-inline">
-										  <input type="radio" class="custom-control-input" id="user_female" name="user_gender" value="0">
-										  <label class="custom-control-label" for="user_female">Female</label>
+										  <input type="radio" class="custom-control-input" id="user_female" name="user_jenis_kelamin" value="0">
+										  <label class="custom-control-label" for="user_female">Perempuan</label>
 										</div>
 									</td>
 								</tr>
 							</table>
 						</div>
 						<div class="form-group">
-							<label for="user_address">Address (Optional)</label>
-							<textarea class="form-control" id="user_address" name="user_address" cols="40" rows="5"></textarea>
+							<label for="user_address">Alamat (Optional)</label>
+							<textarea class="form-control" id="user_alamat" name="user_alamat" cols="40" rows="5"></textarea>
 						</div>
 						<div class="form-group">
 						  <label for="user_email">Email</label>
-						  <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Enter Email" required>
+						  <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Example: a@b.c" required>
 						</div>
 						<div class="form-group">
-						  <label for="user_phone">Phone</label>
+						  <label for="user_phone">No. HP</label>
 						  <input type="text" class="form-control" id="user_phone" name="user_phone" maxlength="13"
 						  placeholder="Enter Phone" onkeypress="return hanyaAngka(event)" required>
+						</div>
+						<div class="form-group">
+						  <label for="user_pendidikan_terakhir">Pendidikan Terakhir</label>
+						  <select name="user_pendidikan_terakhir" id="user_pendidikan_terakhir" 
+							class="form-control" style="width:100%;" required>
+								<option value="">--Pilih Salah Satu--</option>
+								<option value="D1">D1</option>
+								<option value="D2">D2</option>
+								<option value="D3">D3</option>
+								<option value="D4">D4</option>
+								<option value="S1">S1</option>
+								<option value="S2">S2</option>
+								<option value="S3">S3</option>
+							</select>
+						</div>
+						<div class="form-group">
+						  <label for="user_provinsi">Provinsi</label>
+						  <select name="user_provinsi" id="user_provinsi" 
+							class="form-control" style="width:100%;" required>
+								<option value="">--Pilih Salah Satu--</option>
+								<?php foreach ($data_provinsi as $row) { ?>
+									<option value="<?= $row ?>"><?= $row ?></option>
+								<?php } ?>
+							</select>
+						</div>
+						<div class="form-group">
+						  <label for="user_npa">NPA</label>
+						  <input type="text" class="form-control" id="user_npa" name="user_npa"
+						  placeholder="">
+						</div>
+						<div class="form-group">
+						  <label for="user_phone">Cabang Keanggotaan (Optional)</label>
+						  <input type="text" class="form-control" id="user_cabang_keanggotaan" name="user_cabang_keanggotaan"
+						  placeholder="">
+						</div>
+						<div class="form-group">
+						  <label for="user_phone">Wilayah Keanggotaan (Optional)</label>
+						  <input type="text" class="form-control" id="user_wilayah_keanggotaan" name="user_wilayah_keanggotaan"
+						  placeholder="">
 						</div>
 					  </div>
 					  <!-- /.box-body -->
 			  </div>
 			  <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-primary pull-left" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-outline-primary pull-left" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
               </div>
 					</form>
             </div>

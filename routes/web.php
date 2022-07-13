@@ -94,3 +94,7 @@ Route::get('/post-test-result/{id}', [UserPostController::class, 'showResult']);
 
 // TESTIN GROUTE
 Route::view('/tes', 'user_kuesioner_ending');
+
+// USER
+Route::resource('/acknowledgements','AcknowledgementController');
+// USER KUESIONER

@@ -171,6 +171,7 @@
 								<option value="">--Select One--</option>
 								<option value="Introduction">Introduction</option>
 								<option value="Evaluation">Evaluation</option>
+								<option value="Acknowledgements">Acknowledgements</option>
 							</select>
 						</div>
 					   </div>
@@ -227,6 +228,7 @@
 								<option value="">--Select One--</option>
 								<option value="Introduction">Introduction</option>
 								<option value="Evaluation">Evaluation</option>
+								<option value="Acknowledgements">Acknowledgements</option>
 							</select>
 						</div>
 					   </div>

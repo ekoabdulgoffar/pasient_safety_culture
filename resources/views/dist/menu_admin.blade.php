@@ -9,12 +9,12 @@
 	  <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-change-password">
           <i class="fas fa-fw fa-key"></i>
-          <span>Ubah Password</span></a>
+          <span style='color: black;'>Ubah Password</span></a>
       </li>
       <li class="nav-item <?php echo Request::segment(1) == 'Dashboard' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/Dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span style='color: black;'>Dashboard</span></a>
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -23,25 +23,31 @@
 	  <li class="nav-item <?php echo Request::segment(1) == 'management_of_user' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/management_of_user') }}">
           <i class="fas fa-fw fa-user"></i>
-          <span>Kelola Pengguna</span>
+          <span style='color: black;'>Kelola Pengguna</span>
         </a>
       </li>
 	  <li class="nav-item <?php echo Request::segment(1) == 'management_of_education' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/management_of_education') }}">
           <i class="fas fa-fw fa-book"></i>
-          <span>Kelola File Edukasi</span>
+          <span style='color: black;'>Kelola File Edukasi</span>
         </a>
       </li>
 	  <li class="nav-item <?php echo Request::segment(1) == 'history_kuesioner' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/history_kuesioner') }}">
           <i class="fas fa-fw fa-history"></i>
-          <span>Histori Data</span>
+          <span style='color: black;'>Riwayat Pengisian</span>
         </a>
-      </li>
+      </li> 
 	  <li class="nav-item <?php echo Request::segment(1) == 'distribution_of_user' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/distribution_of_user') }}">
          <i class="fas fa-chart-bar"></i>
-          <span>Distribusi Data Pengguna</span>
+          <span style='color: black;'>Distribusi Data Pengguna</span>
+        </a>
+      </li>
+	  <li class="nav-item <?php echo Request::segment(1) == 'acknowledgements' ? 'active' : '' ?>">
+        <a class="nav-link" href="{{ url('/acknowledgements') }}">
+         <i class="fas fa-envelope"></i>
+          <span style='color: black;'>Acknowledgements</span>
         </a>
       </li>
       <hr class="sidebar-divider">

@@ -23,10 +23,20 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login');
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
+		
+        return view('login', $data);
     }
 	
 	public function ceklogin(Request $request) {
+		
 		if ($request->has('username') && $request->has('password'))
 		{
 			// cek user
@@ -76,7 +86,18 @@ class LoginController extends Controller
 				session($newdata);
 				
 				return redirect('Dashboard');
-			} else {$cek_login = 1;
+			} else {
+				
+				$get_data_provinsi = $this->getProvinsi();
+				$data_provinsi = array();
+				foreach ($get_data_provinsi['ID'] as $row) {
+					//echo $row['name'];
+					array_push($data_provinsi,$row['name']);
+				}
+				
+				$data['data_provinsi'] = $data_provinsi;
+		
+				$cek_login = 1;
 				$array['data'] = array('invalid_login' => $cek_login);
 				$data["data"] = $array['data'];
 				return view("login", $data);
@@ -99,31 +120,47 @@ class LoginController extends Controller
 			['user_email', '=', $request->input('user_email')]
 		])->first();
 		if ($data != null) {
-			$crud_message = 'Sorry, your email already exist.';
+			$crud_message = 'Maaf, email anda sudah terdaftar.';
 		} else {
 			$data = array(
 				'user_username' => $request->input("user_username"),
-				'user_password' => myencrypt("Edurisk@".date('Y'), "Pasientsafetyculture@2022"),
-				'user_name' => $request->input("user_name"),
-				'user_date_of_born' => $request->input("user_date_of_born"),
-				'user_place_of_born' => $request->input("user_place_of_born"),
-				'user_gender' => $request->input("user_gender"),
-				'user_address' => $request->input("user_address"),
-				'user_email' => $request->input("user_email"),
-				'user_phone' => $request->input("user_phone"),
-				'user_status' => 0,
-				'user_modiby' => '',
-				'user_modidate' => $today,
-				'user_role' => 'User',
-				'user_institution' => $request->input("user_company")
+					'user_password' => myencrypt($request->input("user_password"), "Pasientsafetyculture@2022"),
+					'user_email' => $request->input("user_email"),
+					'user_name' => $request->input("user_name"),
+					'user_phone' => $request->input("user_phone"),
+					'user_status' => 1,
+					'user_created_by' => 'User',
+					'user_modified_by' => "",
+					'user_created_date' => $today,
+					'user_modified_date' => null,
+					'user_npa' => $request->input("user_npa"),
+					'user_jenis_kelamin' => $request->input("user_jenis_kelamin"),
+					'user_tanggal_lahir' => $request->input("user_tanggal_lahir"),
+					'user_alamat' => $request->input("user_alamat"),
+					'user_pendidikan_terakhir' => $request->input("user_pendidikan_terakhir"),
+					'user_provinsi' => $request->input("user_provinsi"),
+					'user_cabang_keanggotaan' => $request->input("user_cabang_keanggotaan"),
+					'user_wilayah_keanggotaan' => $request->input("user_wilayah_keanggotaan"),
+					'user_role' => 'User',
+					'user_last_login' => null
 			);
 			$result = Users::insert($data);
 			
 			if ($result > 0) {
 				$crud_result = 1;
-				$crud_message = 'Please wait in your email for account verification.';
-			}  else {$crud_message = 'Failed to add payment.';}
+				//$crud_message = 'Please wait in your email for account verification.';
+				$crud_message = 'Akun berhasil didaftarkan, silahkan login.';
+			}  else {$crud_message = 'Gagal melalkukan pendaftaran.';}
 		}
+		
+		$get_data_provinsi = $this->getProvinsi();
+		$data_provinsi = array();
+		foreach ($get_data_provinsi['ID'] as $row) {
+			//echo $row['name'];
+			array_push($data_provinsi,$row['name']);
+		}
+		
+		$data['data_provinsi'] = $data_provinsi;
 		
 		$data['crud_result'] = $crud_result;
 		$data['crud_message'] = $crud_message; 

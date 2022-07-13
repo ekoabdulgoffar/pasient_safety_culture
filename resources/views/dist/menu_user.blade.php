@@ -9,7 +9,7 @@
 	  <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-change-password">
           <i class="fas fa-fw fa-key"></i>
-          <span>Ubah Kata Sandi</span></a>
+          <span style='color: black;'>Ubah Kata Sandi</span></a>
       </li>
       <li class="nav-item <?php echo Request::segment(1) == 'user-dashboard' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-dashboard') }}">
@@ -24,14 +24,14 @@
 	  <li class="nav-item <?php echo Request::segment(1) == 'user-introduction' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-introduction') }}">
           <i class="fa fa-book" aria-hidden="true"></i>
-          <span>Introduction</span>
+          <span style='color: black;'>Introduction</span>
         </a>
       </li>
 		
       <li class="nav-item <?php echo Request::segment(1) == 'user-kuesioner' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/user-kuesioner') }}">
           <i class="fa fa-history" aria-hidden="true"></i>
-          <span>Histori Data</span>
+          <span style='color: black;'>Histori Data</span>
         </a>
       </li>
       <hr class="sidebar-divider">

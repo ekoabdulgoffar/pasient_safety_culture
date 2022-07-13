@@ -74,13 +74,13 @@
 	</div>
  </div>
 <br>
-<div class="card">
+<div class="card" style='color: black;'>
   <div class="card-body">
     <div class="card-title h4 font-weight-bold"><u>Aktivitas Terakhir Anda</u></div>
     <div class="row">
       <div class="col-md-6 mb-3 mb-md-0">
           <p class="font-weight-bold">Survei telah selesai dilakukan</p>
-          <table class="table table-borderless">
+          <table class="table table-borderless" style='color: black;'>
             <tr>
               <td>Nama Survei</td>
               <td>: {{$data['kuesioner']['kuesioner_deskripsi']}}</td>
@@ -105,7 +105,7 @@
         </div>
         <div class="col-md-6 mb-md">         
           <p class="font-weight-bold">Detail</p>
-          <table class="table table-borderless">
+          <table class="table table-borderless" style='color: black;'>
           @foreach ($kelompok as $key=>$item)
           <tr>
             <td>
