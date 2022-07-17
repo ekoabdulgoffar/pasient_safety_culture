@@ -29,7 +29,7 @@ class HistoryKuesionerController extends Controller
 			$table_history_header_temp = "k".$i;
 			array_push($table_history_header, $table_history_header_temp);
 		}
-		array_push($table_history_header, "Total Score","Teamwork Climate","Safety Climate","Job Satisfaction","Stress Recognition", "Management Perception", "Working Condition","Mean Total skor","Status");
+		array_push($table_history_header, "Total Score","Teamwork Climate","Safety Climate","Job Satisfaction","Stress Recognition", "Management Perception", "Working Condition","Mean Total skor","Kategori");
 		
 		// data untuk responden
 		$data_responden = Dt_drespon
