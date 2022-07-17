@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="{{ asset('assets/image/logo-safe_dental.jpeg') }}" rel="icon" />
-  <title>{{env('APP_NAME')}} | Histori Data</title>
+  <title>{{env('APP_NAME')}} | Kelola Data</title>
   @include('dist.css')
 </head>
 
@@ -27,10 +27,10 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Histori Data</h1>
+            <h1 class="h3 mb-0 text-gray-800">Kelola Data</h1>
             <ol class="breadcrumb">
 			  <li class="breadcrumb-item" aria-current="page"><a href="Dashboard">{{env('APP_NAME')}}</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Histori Data</li>
+              <li class="breadcrumb-item active" aria-current="page">Kelola Data</li>
             </ol>
           </div>
 		  <!-- Content Body -->
@@ -70,7 +70,7 @@
 						<tr>
 						  <?php 
 							for ($i = 0; $i < count($table_history_header); $i++) {
-								echo "<th>".$table_history_header[$i]."</th>";
+								echo "<th class='text-center'>".$table_history_header[$i]."</th>";
 							}
 						  ?>
 						  

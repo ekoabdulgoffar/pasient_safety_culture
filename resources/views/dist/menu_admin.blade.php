@@ -35,7 +35,7 @@
 	  <li class="nav-item <?php echo Request::segment(1) == 'history_kuesioner' ? 'active' : '' ?>">
         <a class="nav-link" href="{{ url('/history_kuesioner') }}">
           <i class="fas fa-fw fa-history"></i>
-          <span style='color: black;'>Riwayat Pengisian</span>
+          <span style='color: black;'>Kelola Data</span>
         </a>
       </li> 
 	  <li class="nav-item <?php echo Request::segment(1) == 'distribution_of_user' ? 'active' : '' ?>">

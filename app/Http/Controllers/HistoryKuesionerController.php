@@ -22,14 +22,14 @@ class HistoryKuesionerController extends Controller
 			return abort(404);
 		}
 		
-		$table_history_header=array("No","Nama","Jenis Kelamin","Tanggal Lahir","Alamat","Provinsi","No Whatsapp","Email","Pendidikan","PDGI Cabang", "PDGI Wilayah","Tempat bekerja atau praktik","Saya berpraktik di (Puskesmas/Klinik/Rumah Sakit Umum/Rumah Sakit Swasta/Dsb.)","Area tempat praktik"
+		$table_history_header=array("No","Tanggal","Nama","Jenis Kelamin","Tanggal Lahir","Alamat","Provinsi","No Whatsapp","Email","Pendidikan","PDGI Cabang", "PDGI Wilayah","Tempat bekerja atau praktik","Saya berpraktik di (Puskesmas/Klinik/Rumah Sakit Umum/Rumah Sakit Swasta/Dsb.)","Area tempat praktik"
 		,"Jumlah pasien yang saya kerjakan per hari","Hingga saat ini telah berpraktik selama","Dalam 5 (lima) tahun terakhir pernahkah anda mengikuti pelatihan/seminar tentang keselamatan pasien ?","Anda memiliki STR yang masih berlaku","Anda memiliki SIP yang masih berlaku");
 		
 		for ($i = 1; $i <= 30; $i++) {
 			$table_history_header_temp = "k".$i;
 			array_push($table_history_header, $table_history_header_temp);
 		}
-		array_push($table_history_header, "Total Score","Teamwork Climate","Safety Climate","Job Satisfaction","Stress Recognition", "Management Perception", "Working Condition","Mean Total skor");
+		array_push($table_history_header, "Total Score","Teamwork Climate","Safety Climate","Job Satisfaction","Stress Recognition", "Management Perception", "Working Condition","Mean Total skor","Status");
 		
 		// data untuk responden
 		$data_responden = Dt_drespon
@@ -37,11 +37,11 @@ class HistoryKuesionerController extends Controller
 			->join('dt_dkuesioner', 'dt_dkuesioner.dkuesioner_id', '=', 'dt_drespon.dkuesioner_id')
 			->join('ms_user', 'ms_user.user_id', '=', 'tr_respon.user_id')
             ->select('dt_drespon.respon_id','ms_user.user_id','ms_user.user_name','ms_user.user_jenis_kelamin','ms_user.user_tanggal_lahir','ms_user.user_alamat','ms_user.user_provinsi'
-			,'ms_user.user_phone','ms_user.user_email','ms_user.user_pendidikan_terakhir','ms_user.user_cabang_keanggotaan','ms_user.user_wilayah_keanggotaan','ms_user.user_p1','ms_user.user_p2','ms_user.user_p3','ms_user.user_p4','ms_user.user_p5','ms_user.user_p6','ms_user.user_p7','ms_user.user_p8')
+			,'ms_user.user_phone','ms_user.user_email','ms_user.user_pendidikan_terakhir','ms_user.user_cabang_keanggotaan','ms_user.user_wilayah_keanggotaan','ms_user.user_p1','ms_user.user_p2','ms_user.user_p3','ms_user.user_p4','ms_user.user_p5','ms_user.user_p6','ms_user.user_p7','ms_user.user_p8','tr_respon.respon_datetime')
             ->where([
 				['dt_dkuesioner.kuesioner_id', '=', 1]
 			])->groupBy('dt_drespon.respon_id','ms_user.user_id','ms_user.user_name','ms_user.user_jenis_kelamin','ms_user.user_tanggal_lahir','ms_user.user_alamat','ms_user.user_provinsi'
-			,'ms_user.user_phone','ms_user.user_email','ms_user.user_pendidikan_terakhir','ms_user.user_cabang_keanggotaan','ms_user.user_wilayah_keanggotaan','ms_user.user_p1','ms_user.user_p2','ms_user.user_p3','ms_user.user_p4','ms_user.user_p5','ms_user.user_p6','ms_user.user_p7','ms_user.user_p8')->get();	
+			,'ms_user.user_phone','ms_user.user_email','ms_user.user_pendidikan_terakhir','ms_user.user_cabang_keanggotaan','ms_user.user_wilayah_keanggotaan','ms_user.user_p1','ms_user.user_p2','ms_user.user_p3','ms_user.user_p4','ms_user.user_p5','ms_user.user_p6','ms_user.user_p7','ms_user.user_p8','tr_respon.respon_datetime')->get();	
 		
 		// data untuk jawaban respondent
 		$table_history_isi_jawaban = "";
@@ -65,6 +65,7 @@ class HistoryKuesionerController extends Controller
 			
 			$table_history_isi_jawaban_temp = "<tr>
 					<td>".$no."</td>
+					<td>".$ou['respon_datetime']."</td>
 					<td>".$ou['user_name']."</td>
 					<td>".($ou['user_jenis_kelamin'] == '0' ? 'Perempuan' : 'Laki-laki')."</td>
 					<td>".$ou['user_tanggal_lahir']."</td>
@@ -119,6 +120,21 @@ class HistoryKuesionerController extends Controller
 				
 				if ($cek_jumlah_jawaban == 30) {
 					
+					$result_skor = "";
+					if ($total_skor >= 2325) {
+					  $result_skor ='<td> <span class="badge px-2 py-2 bg-primary rounded text-light">Baik Sekali (Excellent)</span></td>';
+					}
+					elseif ($total_skor >= 2150 && $total_skor <= 2324) {
+					  $result_skor = '<td> <span class="badge px-2 py-2 bg-success rounded text-light">Baik (Good)</span></td>';
+					}
+					elseif ($total_skor >= 2025 && $total_skor <= 2149) {
+					  $result_skor = '<td> <span class="badge px-2 py-2 bg-warning rounded text-light">Sedang (Fair)</span></td>';
+					}
+					elseif ($total_skor < 2025) {
+					  $result_skor = '<td> <span class="badge px-2 py-2 bg-danger rounded text-light">Kurang (Poor)</span></td>';
+					}
+		
+		
 					$meantotalskor = $total_skor / 30;
 					
 					$table_history_isi_jawaban .= "
@@ -132,6 +148,7 @@ class HistoryKuesionerController extends Controller
 							<td style='text-align: center;'>".number_format($mean_persepsi/4,2,",","")."</td>
 							<td style='text-align: center;'>".number_format($mean_kondisi/4,2,",","")."</td>
 							<td style='text-align: center;'>".number_format($meantotalskor,2,",","")."</td>
+							".$result_skor."
 					</tr>";
 					$no++;
 					$cek_jumlah_jawaban = 0;

@@ -68,7 +68,7 @@
 										</a>
 										<a class="dropdown-item" href="{{ url('/history_kuesioner') }}">
 										  <i class="fas fa-fw fa-history"></i>
-										  <span>Histori Data</span>
+										  <span>Kelola Data</span>
 										</a>
 									@endif
 									@if (session('user_role') == 'User' || session('user_role') == 'Dokter Gigi')
