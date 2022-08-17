@@ -77,12 +77,12 @@
   <script src="{{ asset('assets-ruang-admin/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('assets-ruang-admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets-ruang-admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('assets-ruang-admin/js/ruang-admin.min.js') }}"></script>
   <!-- Select2 -->
   <script src="{{ asset('assets-ruang-admin/vendor/select2/dist/js/select2.min.js') }}"></script>
   <!-- Datatables -->
   <script src="{{ asset('assets-ruang-admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets-ruang-admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('assets-ruang-admin/js/ruang-admin.min.js') }}"></script>
   <script src="{{ asset('assets-ruang-admin/vendor/export_datatables/dataTables.buttons.min.js') }}"></script>
   <script src="{{ asset('assets-ruang-admin/vendor/export_datatables/buttons.html5.min.js') }}"></script>
   <script src="{{ asset('assets-ruang-admin/vendor/export_datatables/buttons.print.min.js') }}"></script>
